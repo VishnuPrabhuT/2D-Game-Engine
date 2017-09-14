@@ -6,8 +6,8 @@
 // Also need to install libsdl2-image-dev
 
 #include <iostream>
-#include "SDL.h"
-#include "SDL_image.h"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 int main( ) {
   int posX = 100, posY = 100, width = 320, height = 240;
