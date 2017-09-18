@@ -37,7 +37,7 @@ int main(void) {
 
   SDL_RenderPresent(renderer);
   FrameGenerator frameGen(renderer, window, WINDOW_WIDTH, WINDOW_HEIGHT, 
-    "malloy");
+    "vthirug");
   frameGen.makeFrame();
 
   SDL_Event event;
