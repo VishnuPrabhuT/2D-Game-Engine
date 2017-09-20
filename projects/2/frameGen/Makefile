@@ -7,6 +7,7 @@ LDFLAGS = `sdl2-config --libs` -lm
 
 OBJS = \
   frameGenerator.o \
+  BlackCat.o \
   main.o
 
 EXEC = run

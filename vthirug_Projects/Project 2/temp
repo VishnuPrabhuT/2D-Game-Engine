@@ -1,0 +1,19 @@
+SDL_Point v1={center.x+15,center.y-75};
+	SDL_Point v2={center.x+48,center.y-75};
+	SDL_Point v3={center.x+25,center.y-5};
+	int slope1=abs((v1.x-v3.x)/(v1.y-v3.y));
+	float slope2=(v3.x-v2.x)/(v3.y-v2.y);
+	int curX1=v3.x;
+	int curX2=v3.x;
+	SDL_SetRenderDrawColor(renderer,255,0,0,255);
+	SDL_RenderDrawLine(renderer, v1.x, v1.y, v2.x, v2.y);
+	SDL_SetRenderDrawColor(renderer,0,255,0,255);
+	SDL_RenderDrawLine(renderer, v2.x, v2.y, v3.x, v3.y);
+	SDL_SetRenderDrawColor(renderer,0,0,255,255);	
+	SDL_RenderDrawLine(renderer, v3.x, v3.y, v1.x,v1.y);
+	SDL_SetRenderDrawColor(renderer,0,255,0,255);
+	for(int curY=v3.y;curY>v1.y;curY--){
+				SDL_RenderDrawLine(renderer, static_cast<int>(curX1), static_cast<int>(curY), static_cast<int>(curX2), static_cast<int>(curY));
+				curX1=curX1-slope1;
+				curX2=curX2-slope2;
+	}
