@@ -1,4 +1,6 @@
+#include <sys/stat.h>
 #include <iostream>
+#include <string>
 #include <sstream>
 #include <iomanip>
 #include "frameGenerator.h"
@@ -11,7 +13,12 @@ FrameGenerator(SDL_Renderer* rend, SDL_Window*  win, int w, int h,
   WIDTH( w ),
   HEIGHT( h ),
   USERNAME( n )
-{}
+{
+  struct stat info;
+  if( stat( "frames", &info ) != 0 ) {
+    mkdir("frames", 0755);
+  }
+}
 
 
 void FrameGenerator::makeFrame() {
