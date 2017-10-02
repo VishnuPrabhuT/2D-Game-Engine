@@ -19,8 +19,8 @@ void drawCircle(SDL_Renderer* renderer,
 }
 
 int main(void) {
-  SDL_Renderer *renderer;
-  SDL_Window *window;
+  SDL_Renderer *renderer = nullptr;
+  SDL_Window *window = nullptr;
 
   SDL_Init(SDL_INIT_VIDEO);
   SDL_CreateWindowAndRenderer(
