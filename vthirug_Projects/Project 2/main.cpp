@@ -1,9 +1,9 @@
 #include<SDL.h>
 #include "BlackCat.h"
+#include "frameGenerator.h"
 
 const int WINDOW_WIDTH=700;
 const int WINDOW_HEIGHT=700;
-const int EYE_RADIUS=40;
 
 int main(void){
 	if ( SDL_Init(SDL_INIT_VIDEO) != 0 ) {
@@ -28,10 +28,15 @@ int main(void){
   	SDL_Point center = {250, 350};
   	SDL_Color color = {0,0,0,255};
 	  	
-	BlackCat blacky(renderer,center,color,WINDOW_WIDTH,WINDOW_HEIGHT,EYE_RADIUS);
+	BlackCat blacky(renderer,center,color,WINDOW_WIDTH,WINDOW_HEIGHT);
 	blacky.drawBlackCat();
 
   	SDL_RenderPresent(renderer);
+
+	std::cout<<blacky<<std::endl;
+
+	FrameGenerator frameGen(renderer, window, WINDOW_WIDTH, WINDOW_HEIGHT,"vthirug");
+  	frameGen.makeFrame();
 	SDL_Event event;
   	const Uint8* keystate;
   	while ( true ) {

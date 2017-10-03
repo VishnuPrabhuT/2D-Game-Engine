@@ -13,8 +13,8 @@
 
 class Number {
 public:
-  Number() : number(0) { std::cout << "default" << std::endl; }
-  explicit Number(int n) : number(n) { std::cout << "convert" << std::endl; }
+  //Number() : number(0) { std::cout << "default" << std::endl; }
+  Number(int n) : number(n) { std::cout << "convert" << std::endl; }
   Number(const Number& a) : number(a.number) {
     std::cout << "copy" << std::endl;
   }
@@ -35,7 +35,11 @@ std::ostream& operator<<(std::ostream& out, const Number& n) {
 
 int main() {
   std::vector<Number> vec;
-  for (unsigned int i = 0; i < 4; ++i) {
-    vec.push_back( Number(i) );
+  vec.reserve(10);
+  for (unsigned int i = 0; i < 5; ++i) {
+    vec.emplace_back( Number(i) );
+    std::cout<<vec[i]<<" Capacity - "<<vec.capacity()<<" Size - "<<vec.size()<<std::endl;
   }
+  
+
 }

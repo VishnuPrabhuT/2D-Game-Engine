@@ -2,9 +2,23 @@
 #include<iostream>
 #include <cmath>
 #include "BlackCat.h"
-	
-BlackCat::BlackCat(SDL_Renderer* rend,SDL_Point cen,SDL_Color col,int width,int height,int eyeRad):renderer(rend),center(cen),color(col),WINDOW_WIDTH(width),WINDOW_HEIGHT(height),EYE_RADIUS(eyeRad){
+
+const int EYE_RADIUS=40;
+const int EAR_RADIUS=60;
+BlackCat::BlackCat(SDL_Renderer* rend,SDL_Point cen,SDL_Color col,int width,int height):renderer(rend),center(cen),color(col),WINDOW_WIDTH(width),WINDOW_HEIGHT(height){
 			
+}
+
+std::ostream& operator<<(std::ostream& out,const BlackCat& cat){
+	return out<<"Width-"<<cat.getWidth()<<" Height-"<<cat.getHeight();
+}
+
+int BlackCat::getWidth() const{
+	return WINDOW_WIDTH;
+}
+
+int BlackCat::getHeight() const{
+	return WINDOW_HEIGHT;
 }
 
 void BlackCat::drawBlackCat(){
@@ -12,13 +26,11 @@ void BlackCat::drawBlackCat(){
 	SDL_Rect body = {center.x+15, center.y-0, 150, 175};
   	SDL_SetRenderDrawColor( renderer, 0, 0, 0, 255 );
   	SDL_RenderFillRect( renderer, &body );
-
-	int radius=60;
-	for (int s=0;s<radius*2;s++){
-		for (int r=0;r<radius*2;r++){
-			int dx=radius-s;
-			int dy=radius-r;
-			if ((dx*dx + dy*dy) <= (radius * radius)) {
+	for (int s=0;s<EAR_RADIUS*2;s++){
+		for (int r=0;r<EAR_RADIUS*2;r++){
+			int dx=EAR_RADIUS-s;
+			int dy=EAR_RADIUS-r;
+			if ((dx*dx + dy*dy) <= (EAR_RADIUS * EAR_RADIUS)) {
 				SDL_SetRenderDrawColor(renderer,0,0,0,255);
 				SDL_RenderDrawPoint(renderer, center.x + dx+5, center.y + dy-200);
 				SDL_RenderDrawPoint(renderer, center.x + dx+175, center.y + dy-200);
@@ -30,7 +42,6 @@ void BlackCat::drawBlackCat(){
 			}			
 		}	
 	}
-
 	SDL_Rect head = {center.x-35, center.y-200, 250, 200};
   	SDL_SetRenderDrawColor( renderer, 0, 0, 0, 255 );
   	SDL_RenderFillRect( renderer, &head );
