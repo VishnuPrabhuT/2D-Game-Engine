@@ -3,7 +3,8 @@
 # This file is based on a post that focused on
 # this method. The post can be found at:
 # http://make.mad-scientist.net/papers/advanced-auto-dependency-generation/
-# Modified by Zack Sullivan
+# Modifications to the original Makefile are contributed by
+#  Zackary Sullivan, Fall 2017
 
 CXX = clang++
 
@@ -15,8 +16,9 @@ CXXFLAGS = `sdl2-config --cflags` -g -W -Wall -std=c++11 -Weffc++ -Wextra -pedan
 
 LDFLAGS = `sdl2-config --libs` -lm -lSDL2_image -lexpat -lSDL2_ttf -lSDL2_mixer
 
-SRCFLS = $(shell find . -regex ".*\.cpp" -printf "%f ")
-SRCDIR = $(shell find . -regex ".*\.cpp" -printf "%h\n" | sort -u | tr '\n' ':')
+SRCPTH = $(shell find . -regex ".*\.cpp" | tr '\n' ' ')
+SRCFLS = $(notdir $(SRCPTH))
+SRCDIR = $(dir $(SRCPTH))
 
 OBJDIR  = build
 $(shell mkdir -p $(OBJDIR) >/dev/null)
