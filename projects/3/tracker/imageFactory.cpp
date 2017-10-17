@@ -15,22 +15,34 @@ ImageFactory::~ImageFactory() {
     SDL_FreeSurface(ptr->second);
     ++ptr;
   }
-  for(auto& ti : textures) SDL_DestroyTexture(ti.second);
-  for(auto& fi : images  ) {
-    std::cout << "deleting " << fi.first << std::endl;
-    delete fi.second;
+
+  std::map<std::string, SDL_Texture*>::iterator tiPtr=textures.begin(); 
+  while(tiPtr!=textures.end()) {
+    SDL_DestroyTexture(tiPtr->second);
+    ++tiPtr;
+  }
+
+  std::map<std::string, Image*>::iterator fiPtr=images.begin();
+  while(fiPtr!=images.end()) {
+    std::cout << "deleting " << fiPtr->first << std::endl;
+    delete fiPtr->second;
+    ++fiPtr;
   }
 
   // Free multi-image containers
-  for ( auto surfaces : multiSurfaces ) {
-    for (unsigned int i = 0; i < surfaces.second.size(); ++i) {
-      SDL_FreeSurface( surfaces.second[i] );
+  std::map<std::string, std::vector<SDL_Surface*>>::iterator surfacePtr=multiSurfaces.begin();
+  while ( surfacePtr!= multiSurfaces.end() ) {
+    for (unsigned int i = 0; i < surfacePtr->second.size(); ++i) {
+      SDL_FreeSurface( surfacePtr->second[i] );
     }
+    ++surfacePtr;
   }
-  for ( auto textures : multiTextures ) {
-    for (unsigned int i = 0; i < textures.second.size(); ++i) {
-      SDL_DestroyTexture( textures.second[i] );
+  std::map<std::string, std::vector<SDL_Texture*>>::iterator texturePtr=multiTextures.begin();
+  while ( texturePtr!= multiTextures.end() ) {
+    for (unsigned int i = 0; i < texturePtr->second.size(); ++i) {
+      SDL_DestroyTexture( texturePtr->second[i] );
     }
+    ++texturePtr;
   }
 
   for ( auto images : multiImages ) {
