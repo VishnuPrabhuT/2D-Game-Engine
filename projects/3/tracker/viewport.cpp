@@ -1,6 +1,7 @@
 #include <sstream>
 #include "viewport.h"
 #include "ioMod.h"
+#include "clock.h"
 
 Viewport& Viewport::getInstance() {
   static Viewport viewport;
@@ -25,8 +26,11 @@ void Viewport::setObjectToTrack(const Drawable *obj) {
 }
 
 void Viewport::draw() const {
-  IOmod::getInstance().
-    writeText("Tracking: "+objectToTrack->getName(), 30, 30);
+  IOmod::getInstance().writeText("Tracking: "+objectToTrack->getName(), 30, 30);
+  std::stringstream strm;
+  strm<<"FPS: "<<Clock::getInstance().getFps();
+  IOmod::getInstance().writeText(strm.str(), 30, 60);
+  IOmod::getInstance().writeText("Vishnu", 30, 420,{0xff, 255, 255, 255});
 }
 
 void Viewport::update() {

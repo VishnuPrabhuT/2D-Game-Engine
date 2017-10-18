@@ -2,8 +2,8 @@
 #include "vector2f.h"
 #include "renderContext.h"
 
-ImageFactory* ImageFactory::getInstance() {
-  if ( !instance ) instance = new ImageFactory;
+ImageFactory& ImageFactory::getInstance() {
+  static ImageFactory instance;
   return instance;
 }
 

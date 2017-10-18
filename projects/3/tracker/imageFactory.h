@@ -8,14 +8,13 @@
 class ImageFactory {
 public:
 
-  static ImageFactory* getInstance();
+  static ImageFactory& getInstance();
   ~ImageFactory();
 
   Image* getImage(const std::string&);
   std::vector<Image*> getImages(const std::string&);
 
 private:
-  static ImageFactory* instance;
   const Gamedata& gdata;
 
   std::map<std::string, SDL_Surface*> surfaces;

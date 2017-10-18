@@ -40,7 +40,7 @@ build/viewport.o: viewport.cpp viewport.h drawable.h \
   /usr/local/include/SDL2/SDL_system.h \
   /usr/local/include/SDL2/SDL_timer.h \
   /usr/local/include/SDL2/SDL_version.h vector2f.h image.h gamedata.h \
-  parseXML.h ioMod.h /usr/local/include/SDL2/SDL_ttf.h
+  parseXML.h ioMod.h /usr/local/include/SDL2/SDL_ttf.h clock.h
 
 viewport.h:
 
@@ -143,3 +143,5 @@ parseXML.h:
 ioMod.h:
 
 /usr/local/include/SDL2/SDL_ttf.h:
+
+clock.h:
