@@ -1,0 +1,91 @@
+<?xml version = "1.0"?>
+<GameData>
+
+<view>
+  <width>640</width>
+  <height>480</height>
+</view>
+
+<world>
+  <width>800</width>
+  <height>800</height>
+</world>
+
+<screenTitle>Incorporating Artificial Intelligence</screenTitle>
+<numberOfStars>10</numberOfStars>
+<numberOfOrbs>10</numberOfOrbs>
+<!-- 
+  0 is MidPoint
+  1 is Rectangular
+  2 is PerPixel
+ -->
+<collisionStrategy>2</collisionStrategy>
+<safeDistance>75</safeDistance>
+
+<back>
+  <file>images/planet.png</file>
+  <factor>1</factor>
+  <src x="0" y="0"/>
+  <width>800</width>
+  <height>800</height>
+  <transparency>false</transparency>
+</back>
+
+<font name="font">
+  <file>font/dyslexic-bold.otf</file>
+  <size>16</size>
+  <red>255</red>
+  <green>255</green>
+  <blue>0</blue>
+  <unused>0</unused>
+</font>
+<maxStringSize>50</maxStringSize>
+
+<spinstar>
+  <file>images/star.png</file>
+  <startLoc x="120" y="140"/>
+  <frames>4</frames>
+  <frameInterval>20</frameInterval>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>32</width>
+  <height>32</height>
+  <speedX>-200</speedX>
+  <speedY>200</speedY>
+  <transparency>true</transparency>
+</spinstar>
+
+
+<star>
+  <file>images/yellowstar32.png</file>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>32</width>
+  <height>32</height>
+  <startLoc x="320" y="240"/>
+  <speedX>-175</speedX>
+  <speedY>-175</speedY>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
+  <transparency>true</transparency>
+</star>
+
+<orb>
+  <file>images/yellowball.png</file>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>32</width>
+  <height>32</height>
+  <startLoc x="320" y="240"/>
+  <speedX>175</speedX>
+  <speedY>175</speedY>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
+  <transparency>true</transparency>
+</orb>
+
+</GameData>
