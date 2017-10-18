@@ -17,12 +17,12 @@
 </view>
 
 <world>
-  <width>2000</width>
-  <height>800</height>
+  <width>1250</width>
+  <height>480</height>
 </world>
 
 <back>
-  <file>assets/checkerboard.bmp</file>
+  <file>assets/namek.jpg</file>
   <factor>1</factor>
   <transparency>false</transparency>
 </back>

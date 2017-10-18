@@ -21,7 +21,7 @@ Engine::Engine() :
   io( IOmod::getInstance() ),
   clock( Clock::getInstance() ),
   renderer( rc->getRenderer() ),
-  world("back", Gamedata::getInstance().getXmlInt("back/factor") ),
+  namek("back", Gamedata::getInstance().getXmlInt("back/factor") ),
   viewport( Viewport::getInstance() ),
   star(new Sprite("YellowStar")),
   spinningStar(new MultiSprite("SpinningStar")),
@@ -34,7 +34,7 @@ Engine::Engine() :
 }
 
 void Engine::draw() const {
-  world.draw();
+  namek.draw();
 
   star->draw();
   spinningStar->draw();
@@ -46,7 +46,7 @@ void Engine::draw() const {
 void Engine::update(Uint32 ticks) {
   star->update(ticks);
   spinningStar->update(ticks);
-  world.update();
+  namek.update();
   viewport.update(); // always update viewport last
 }
 
