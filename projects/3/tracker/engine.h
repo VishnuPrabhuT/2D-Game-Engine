@@ -20,8 +20,10 @@ private:
 
   SDL_Renderer * const renderer;
   World namek;
+  World sky;
   Viewport& viewport;
 
+  std::vector<Drawable*> polyVector;
   Drawable* star;
   Drawable* spinningStar;
   int currentSprite;

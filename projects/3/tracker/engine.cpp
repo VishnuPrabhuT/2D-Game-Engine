@@ -11,8 +11,11 @@
 #include "frameGenerator.h"
 
 Engine::~Engine() { 
-  delete star;
-  delete spinningStar;
+  //delete star;
+  for (auto sprite:polyVector){
+   delete sprite;  
+  }
+  //delete spinningStar;
   std::cout << "Terminating program" << std::endl;
 }
 
@@ -21,31 +24,40 @@ Engine::Engine() :
   io( IOmod::getInstance() ),
   clock( Clock::getInstance() ),
   renderer( rc->getRenderer() ),
-  namek("back", Gamedata::getInstance().getXmlInt("back/factor") ),
+  namek("namek", Gamedata::getInstance().getXmlInt("namek/factor") ),
+  sky("sky", Gamedata::getInstance().getXmlInt("sky/factor") ),
   viewport( Viewport::getInstance() ),
-  star(new Sprite("YellowStar")),
-  spinningStar(new MultiSprite("SpinningStar")),
   currentSprite(0),
   makeVideo( false )
 {
-  
-  Viewport::getInstance().setObjectToTrack(star);
+  polyVector.emplace_back(new Sprite("YellowStar"));
+  polyVector.emplace_back(new MultiSprite("SpinningStar"));
+  Viewport::getInstance().setObjectToTrack(polyVector.front());
   std::cout << "Loading complete" << std::endl;
 }
 
 void Engine::draw() const {
+  sky.draw();
   namek.draw();
 
-  star->draw();
-  spinningStar->draw();
+  for (auto sprite:polyVector){
+    sprite->draw();  
+  }
+  
+  //spinningStar->draw();
 
   viewport.draw();
   SDL_RenderPresent(renderer);
 }
 
 void Engine::update(Uint32 ticks) {
-  star->update(ticks);
-  spinningStar->update(ticks);
+  for (auto sprite:polyVector)
+  {
+    sprite->update(ticks);  
+  }
+  //star->update(ticks);
+  //spinningStar->update(ticks);
+  sky.update();
   namek.update();
   viewport.update(); // always update viewport last
 }
@@ -54,10 +66,10 @@ void Engine::switchSprite(){
   ++currentSprite;
   currentSprite = currentSprite % 2;
   if ( currentSprite ) {
-    Viewport::getInstance().setObjectToTrack(spinningStar);
+    Viewport::getInstance().setObjectToTrack(polyVector[currentSprite]);
   }
   else {
-    Viewport::getInstance().setObjectToTrack(star);
+    Viewport::getInstance().setObjectToTrack(polyVector[currentSprite]);
   }
 }
 

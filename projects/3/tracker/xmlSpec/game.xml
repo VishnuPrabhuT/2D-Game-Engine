@@ -2,14 +2,14 @@
 <GameData>
 <!-- screenTitle is also used to identify you and your animation. 
      So make sure to include your name as part of the screenTitle -->
-<title>The Tracker Framework</title>
+<title>Transformed at Last</title>
 <maxStringSize>50</maxStringSize>
 
 <frameCapOn>true</frameCapOn>
 <period>17</period>
 
 <maxFrames>300</maxFrames>
-<username>malloy</username>
+<username>vthirug</username>
 
 <view>
   <width>854</width>
@@ -21,11 +21,17 @@
   <height>480</height>
 </world>
 
-<back>
-  <file>assets/namek.jpg</file>
+<namek>
+  <file>assets/namek.png</file>
   <factor>1</factor>
+  <transparency>true</transparency>
+</namek>
+
+<sky>
+  <file>assets/sky.jpg</file>
+  <factor>3</factor>
   <transparency>false</transparency>
-</back>
+</sky>
 
 <font name="font">
   <file>fonts/arial.ttf</file>
@@ -36,17 +42,20 @@
   <alpha>0</alpha>
 </font>
 
+
 <SpinningStar>
-  <file>assets/spinstar.png</file>
+  <file>assets/goku.png</file>
   <startLoc x="50" y="140"/>
-  <frames>4</frames>
-  <imageWidth>32</imageWidth>
-  <imageHeight>32</imageHeight>
-  <frameInterval>50</frameInterval>
-  <speedX>200</speedX>
-  <speedY>200</speedY>
+  <frames>6</frames>
+  <imageWidth>121</imageWidth>
+  <imageHeight>325</imageHeight>
+  <frameInterval>300</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
   <transparency>false</transparency>
 </SpinningStar>
+
+
 
 <YellowStar>
   <file>assets/yellowstar32.png</file>
