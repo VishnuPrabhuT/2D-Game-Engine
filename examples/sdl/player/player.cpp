@@ -20,8 +20,7 @@ Player& Player::operator=(const Player& s) {
 }
 
 void Player::stop() { 
-  setVelocityX( 0.89*getVelocityX() );
-  setVelocityY(0);
+  setVelocity(Vector2f(0,0));
 }
 
 void Player::right() { 
