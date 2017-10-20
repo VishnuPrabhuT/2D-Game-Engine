@@ -8,7 +8,7 @@
 <frameCapOn>true</frameCapOn>
 <period>17</period>
 
-<maxFrames>300</maxFrames>
+<maxFrames>500</maxFrames>
 <username>vthirug</username>
 
 <view>
@@ -43,35 +43,45 @@
 </font>
 
 
-
-
-<!--<Aura>
-  <file>assets/Aura.png</file>
-  <startLoc x="100" y="150"/>
-  <frames>4</frames>
-  <imageWidth>204</imageWidth>
-  <imageHeight>220</imageHeight>
-  <frameInterval>500</frameInterval>
+<ShockMe>
+  <file>assets/ShockMe.png</file>
+  <startLoc x="700" y="200"/>
+  <frames>1</frames>
+  <imageWidth>340</imageWidth>
+  <imageHeight>450</imageHeight>
+  <frameInterval>50</frameInterval>
   <speedX>0</speedX>
   <speedY>0</speedY>
   <transparency>true</transparency>
-</Aura>-->
+</ShockMe>
 
-<Gohan>
-  <file>assets/gohanf.png</file>
-  <startLoc x="200" y="200"/>
-  <frames>30</frames>
-  <imageWidth>82</imageWidth>
-  <imageHeight>200</imageHeight>
-  <frameInterval>300</frameInterval>
+<Aura>
+  <file>assets/Aura.png</file>
+  <startLoc x="280" y="80"/>
+  <frames>3</frames>
+  <imageWidth>340</imageWidth>
+  <imageHeight>380</imageHeight>
+  <frameInterval>50</frameInterval>
   <speedX>0</speedX>
   <speedY>0</speedY>
   <transparency>false</transparency>
-</Gohan>
+</Aura>
+
+<Goku>
+  <file>assets/goku.png</file>
+  <startLoc x="395" y="200"/>
+  <frames>3</frames>
+  <imageWidth>121</imageWidth>
+  <imageHeight>300</imageHeight>
+  <frameInterval>500</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <transparency>false</transparency>
+</Goku>
 
 <Charizard>
   <file>assets/Charizard.png</file>
-  <startLoc x="100" y="150"/>
+  <startLoc x="100" y="100"/>
   <frames>8</frames>
   <imageWidth>105.25</imageWidth>
   <imageHeight>95</imageHeight>
@@ -85,7 +95,7 @@
   <file>assets/CharizardLeft.png</file>
   <startLoc x="100" y="150"/>
   <frames>8</frames>
-  <imageWidth>105.25</imageWidth>
+  <imageWidth>107.25</imageWidth>
   <imageHeight>95</imageHeight>
   <frameInterval>300</frameInterval>
   <speedX>100</speedX>

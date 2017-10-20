@@ -29,10 +29,13 @@ Engine::Engine() :
   sky("sky", Gamedata::getInstance().getXmlInt("sky/factor") ),
   viewport( Viewport::getInstance() ),
   currentSprite(0),
-  makeVideo( false )
+  makeVideo( true )
 {
+  polyVector.reserve(4);
   polyVector.emplace_back(new TwoWayMultiSprite("Charizard"));
-  polyVector.emplace_back(new MultiSprite("Gohan"));
+  polyVector.emplace_back(new MultiSprite("Goku"));
+  polyVector.emplace_back(new MultiSprite("Aura"));
+  polyVector.emplace_back(new Sprite("ShockMe"));
   Viewport::getInstance().setObjectToTrack(polyVector.front());
   std::cout << "Loading complete" << std::endl;
 }

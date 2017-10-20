@@ -23,9 +23,7 @@ private:
   World sky;
   Viewport& viewport;
 
-  std::vector<Drawable*> polyVector;
-  Drawable* star;
-  Drawable* spinningStar;
+  std::vector<Drawable*> polyVector;	
   int currentSprite;
 
   bool makeVideo;
