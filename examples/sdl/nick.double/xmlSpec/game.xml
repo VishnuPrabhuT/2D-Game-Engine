@@ -1,0 +1,150 @@
+<?xml version = "1.0"?>
+<GameData>
+<!-- screenTitle is also used to identify you and your animation.
+     So make sure to include your name as part of the screenTitle -->
+<title>starfield ndreed</title>
+<maxStringSize>50</maxStringSize>
+
+<frameCapOn>true</frameCapOn>
+<period>17</period>
+
+<maxFrames>2000</maxFrames>
+<username>ndreed</username>
+
+<!-- ==== display elements ================================================ -->
+
+<view>
+  <width>854</width>
+  <height>480</height>
+</view>
+
+<world>
+  <width>2000</width>
+  <height>2000</height>
+</world>
+
+<!-- ==== NPC count elements ============================================== -->
+
+<!--How many darts are present-->
+<dartCount>40</dartCount>
+
+<!--How many birds are present-->
+<birdCount>40</birdCount>
+
+<!--How many behemoths are present-->
+<behemothCount>1</behemothCount>
+
+<!-- ==== player behavior elements ======================================== -->
+
+<playerMaxSpeed>800</playerMaxSpeed>
+
+<playerAcceleration>20</playerAcceleration>
+
+<playerDamping>0.96</playerDamping>
+
+<!-- ==== bird behavior elements ========================================== -->
+
+<!--How far a bird can see other birds to flock-->
+<birdNeighborRadius>400</birdNeighborRadius>
+
+<!--How close another bird can get before this one panics-->
+<birdPanicRadius>100</birdPanicRadius>
+
+
+<!--Max bird speed-->
+<birdMaxSpeed>500</birdMaxSpeed>
+
+<!--Bird speed damper, for when they get too fast-->
+<birdDamping>1.1</birdDamping>
+
+
+<!--How strongly birds are attracted to one another-->
+<flockCoherence>15</flockCoherence>
+
+<!--How likely birds are to fly the same direction as the flock-->
+<flockAlignment>1</flockAlignment>
+
+<!--How strongly the birds move apart when they get too close-->
+<flockSeparation>4</flockSeparation>
+
+<!--How strongly the birds avoid walls-->
+<flockAvoidance>1</flockAvoidance>
+
+<!-- ==== assets ========================================================== -->
+
+<starfield>
+  <file>assets/starfield.png</file>
+  <factor>4</factor>
+  <transparency>false</transparency>
+</starfield>
+
+<starfog>
+    <file>assets/starfog.png</file>
+    <factor>2</factor>
+    <transparency>true</transparency>
+</starfog>
+
+<starfront>
+    <file>assets/starfront.png</file>
+    <factor>1</factor>
+    <transparency>true</transparency>
+</starfront>
+
+<font name="font">
+  <file>fonts/arial.ttf</file>
+  <size>24</size>
+  <red>44</red>
+  <green>44</green>
+  <blue>255</blue>
+  <alpha>0</alpha>
+</font>
+
+<bird>
+    <file>assets/bird.png</file>
+    <startLoc x="227" y="240"/>
+    <frames>6</frames>
+    <imageWidth>40</imageWidth>
+    <imageHeight>40</imageHeight>
+    <frameInterval>200</frameInterval>
+    <speedX>300</speedX>
+    <speedY>300</speedY>
+    <transparency>true</transparency>
+</bird>
+
+<dart>
+    <file>assets/dart.png</file>
+    <startLoc x="227" y = "240"/>
+    <frames>4</frames>
+    <imageWidth>24</imageWidth>
+    <imageHeight>24</imageHeight>
+    <frameInterval>100</frameInterval>
+    <speedX>400</speedX>
+    <speedY>400</speedY>
+    <transparency>true</transparency>
+</dart>
+
+<glowship>
+    <file>assets/glowship.png</file>
+    <startLoc x="300" y = "300"/>
+    <frames>4</frames>
+    <imageWidth>64</imageWidth>
+    <imageHeight>64</imageHeight>
+    <frameInterval>400</frameInterval>
+    <speedX>0</speedX>
+    <speedY>0</speedY>
+    <transparency>true</transparency>
+</glowship>
+
+<behemoth>
+    <file>assets/behemoth.png</file>
+    <startLoc x="200" y="200"/>
+    <frames>8</frames>
+    <speedX>50</speedX>
+    <speedY>40</speedY>
+    <frameInterval>300</frameInterval>
+    <imageWidth>160</imageWidth>
+    <imageHeight>160</imageHeight>
+    <transparency>true</transparency>
+</behemoth>
+
+</GameData>
