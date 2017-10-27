@@ -2,7 +2,7 @@
 <GameData>
 <!-- screenTitle is also used to identify you and your animation. 
      So make sure to include your name as part of the screenTitle -->
-<title>Transformed at Last</title>
+<title>Easter</title>
 <maxStringSize>50</maxStringSize>
 
 <frameCapOn>true</frameCapOn>
@@ -12,26 +12,44 @@
 <username>vthirug</username>
 
 <view>
-  <width>854</width>
-  <height>480</height>
+  <width>2045</width>
+  <height>750</height>
 </view>
 
 <world>
-  <width>1250</width>
-  <height>480</height>
+  <width>2045</width>
+  <height>750</height>
 </world>
 
-<namek>
-  <file>assets/namek.png</file>
+<hills1>
+  <file>assets/hills/hills1.png</file>
+  <factor>7</factor>
+  <transparency>true</transparency>
+</hills1>
+
+<hills2>
+  <file>assets/hills/hills2.png</file>
+  <factor>6</factor>
+  <transparency>true</transparency>
+</hills2>
+
+<hills3>
+  <file>assets/hills/hills3.png</file>
+  <factor>4</factor>
+  <transparency>true</transparency>
+</hills3>
+
+<hills4>
+  <file>assets/hills/hills4.png</file>
+  <factor>2</factor>
+  <transparency>true</transparency>
+</hills4>
+
+<hills5>
+  <file>assets/hills/hills5.png</file>
   <factor>1</factor>
   <transparency>true</transparency>
-</namek>
-
-<sky>
-  <file>assets/sky.jpg</file>
-  <factor>3</factor>
-  <transparency>false</transparency>
-</sky>
+</hills5>
 
 <font name="font">
   <file>fonts/arial.ttf</file>

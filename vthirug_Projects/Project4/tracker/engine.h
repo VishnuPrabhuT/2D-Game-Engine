@@ -6,6 +6,8 @@
 #include "world.h"
 #include "viewport.h"
 
+class Player;
+
 class Engine {
 public:
   Engine ();
@@ -19,10 +21,13 @@ private:
   Clock& clock;
 
   SDL_Renderer * const renderer;
-  World namek;
-  World sky;
+  World hills1;
+  World hills2;
+  World hills3;
+  World hills4;
+  World hills5;
   Viewport& viewport;
-
+  Player* player;
   std::vector<Drawable*> polyVector;	
   int currentSprite;
 
