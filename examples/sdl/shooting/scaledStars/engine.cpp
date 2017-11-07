@@ -42,7 +42,7 @@ Engine::Engine() :
   unsigned int n = Gamedata::getInstance().getXmlInt("numberOfStars");
   for ( unsigned int i = 0; i < n; ++i ) {
     Drawable* s = new Sprite("YellowStar");
-    float scale = Gamedata::getInstance().getRandFloat(1,2);
+    float scale = Gamedata::getInstance().getRandFloat(0.1,2);
     s->setScale(scale);
     sprites.push_back(s);
   }
