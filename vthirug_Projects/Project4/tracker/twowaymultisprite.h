@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <cmath>
+#include <string>
 #include "drawable.h"
 
 class TwoWayMultiSprite : public Drawable {
@@ -27,8 +28,12 @@ public:
   }
 
 protected:
-  std::vector<Image *> imagesRight;
-  std::vector<Image *> imagesLeft;
+  std::vector<Image *> idleRight;
+  std::vector<Image *> idleLeft;
+  std::vector<Image *> runRight;
+  std::vector<Image *> runLeft;
+  std::vector<Image *> dashRight;
+  std::vector<Image *> dashLeft;
   std::vector<Image *> images;
   
 

@@ -1,9 +1,9 @@
 #ifndef PLAYER__H
 #define PLAYER__H
 
-#include "multisprite.h"
+#include "twowaymultisprite.h"
 
-class Player : public MultiSprite {
+class Player : public TwoWayMultiSprite {
 public:
   Player(const std::string&);
   Player(const Player&);
@@ -15,11 +15,12 @@ public:
 
   void right();
   void left();
-  void up();
+  void dash();
   void down();
   void stop();
 private:
   bool collision;
+  bool moving;
   Vector2f initialVelocity;
 };
 #endif

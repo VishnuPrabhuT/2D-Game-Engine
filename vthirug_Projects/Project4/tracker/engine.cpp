@@ -17,6 +17,7 @@ Engine::~Engine() {
   for (auto sprite:polyVector){
    delete sprite;  
   }
+  delete player;
   //delete spinningStar;
   std::cout << "Terminating program" << std::endl;
 }
@@ -24,6 +25,7 @@ Engine::~Engine() {
 Engine::Engine() :
   rc( RenderContext::getInstance() ),
   io( IOmod::getInstance() ),
+  hud( HUD::getInstance() ),
   clock( Clock::getInstance() ),
   renderer( rc->getRenderer() ),
   hills1("hills1", Gamedata::getInstance().getXmlInt("hills1/factor") ),
@@ -32,12 +34,15 @@ Engine::Engine() :
   hills4("hills4", Gamedata::getInstance().getXmlInt("hills4/factor") ),
   hills5("hills5", Gamedata::getInstance().getXmlInt("hills5/factor") ),
   viewport( Viewport::getInstance() ),
-  player(new Player("Charizard")),
+  player(new Player("IdleRight")),
   currentSprite(0),
+  showHUD(true),
+  initialFlag(true),
   makeVideo( false )
 {
   //polyVector.reserve(4);
-  //polyVector.emplace_back(new TwoWayMultiSprite("Charizard"));
+  //polyVector.emplace_back(new TwoWayMultiSprite("IdleRight"));
+  //polyVector.emplace_back(new TwoWayMultiSprite("IdleLeft"));
   //polyVector.emplace_back(new MultiSprite("Goku"));
   //polyVector.emplace_back(new MultiSprite("Aura"));
   //polyVector.emplace_back(new Sprite("ShockMe"));
@@ -45,7 +50,7 @@ Engine::Engine() :
   std::cout << "Loading complete" << std::endl;
 }
 
-void Engine::draw() const {
+void Engine::draw() const {  
   hills1.draw();
   hills2.draw();
   hills3.draw();
@@ -58,11 +63,16 @@ void Engine::draw() const {
   
   //spinningStar->draw();
   player->draw();
+  //std::cout<<clock.getElapsedTicks();
+  if(showHUD){
+    io.writeText(hud.getText(),30, 350,{0xff, 255, 255, 255});
+  }
   viewport.draw();
   SDL_RenderPresent(renderer);
 }
 
 void Engine::update(Uint32 ticks) {
+  //std::cout<<clock.getTicks()<<"-";
   player->update(ticks);
   for (auto sprite:polyVector)
   {
@@ -98,6 +108,10 @@ void Engine::play() {
 
   while ( !done ) {
     // The next loop polls for events, guarding against key bounce:
+    if(clock.getTicks()>7500 && initialFlag){
+      showHUD=false;
+      initialFlag=false;
+    }
     while ( SDL_PollEvent(&event) ) {
       keystate = SDL_GetKeyboardState(NULL);
       if (event.type ==  SDL_QUIT) { done = true; break; }
@@ -105,6 +119,9 @@ void Engine::play() {
         if (keystate[SDL_SCANCODE_ESCAPE] || keystate[SDL_SCANCODE_Q]) {
           done = true;
           break;
+        }
+        if ( keystate[SDL_SCANCODE_F1] ) {
+          showHUD=!showHUD;
         }
         if ( keystate[SDL_SCANCODE_P] ) {
           if ( clock.isPaused() ) clock.unpause();
@@ -129,14 +146,14 @@ void Engine::play() {
     ticks = clock.getElapsedTicks();
     if ( ticks > 0 ) {
       clock.incrFrame();
-      if(keystate[SDL_SCANCODE_A]){
+      if(keystate[SDL_SCANCODE_A]){        
         player->left();
       }
       if(keystate[SDL_SCANCODE_D]){
         player->right();
       }
-      if(keystate[SDL_SCANCODE_W]){
-        player->up();
+      if(keystate[SDL_SCANCODE_SPACE]){
+        player->dash();
       }
       if(keystate[SDL_SCANCODE_S]){
         player->down();

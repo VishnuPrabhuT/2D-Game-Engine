@@ -12,13 +12,13 @@
 <username>vthirug</username>
 
 <view>
-  <width>2045</width>
-  <height>750</height>
+  <width>1500</width>
+  <height>180</height>
 </view>
 
 <world>
-  <width>2045</width>
-  <height>750</height>
+  <width>2000</width>
+  <height>200</height>
 </world>
 
 <hills1>
@@ -60,6 +60,81 @@
   <alpha>0</alpha>
 </font>
 
+<HUD>
+  <instructions>WASD</instructions>
+</HUD>
+
+<IdleRight>
+  <file>assets/Buck/IdleRight.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>4</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>100</frameInterval>
+  <speedX>100</speedX>
+  <speedY>100</speedY>
+  <transparency>false</transparency>
+</IdleRight>
+
+<IdleLeft>
+  <file>assets/Buck/IdleLeft.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>4</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>100</frameInterval>
+  <speedX>100</speedX>
+  <speedY>100</speedY>
+  <transparency>false</transparency>
+</IdleLeft>
+
+<RunRight>
+  <file>assets/Buck/RunRight.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>6</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>100</frameInterval>
+  <speedX>150</speedX>
+  <speedY>150</speedY>
+  <transparency>false</transparency>
+</RunRight>
+
+<RunLeft>
+  <file>assets/Buck/RunLeft.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>6</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>100</frameInterval>
+  <speedX>150</speedX>
+  <speedY>150</speedY>
+  <transparency>false</transparency>
+</RunLeft>
+
+<DashRight>
+  <file>assets/Buck/DashRight.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>6</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>200</frameInterval>
+  <speedX>150</speedX>
+  <speedY>150</speedY>
+  <transparency>false</transparency>
+</DashRight>
+
+<DashLeft>
+  <file>assets/Buck/DashLeft.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>7</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>200</frameInterval>
+  <speedX>150</speedX>
+  <speedY>150</speedY>
+  <transparency>false</transparency>
+</DashLeft>
 
 <ShockMe>
   <file>assets/ShockMe.png</file>

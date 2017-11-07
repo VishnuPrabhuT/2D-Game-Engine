@@ -1,4 +1,4 @@
-build/player.o: player.cpp player.h multisprite.h drawable.h \
+build/player.o: player.cpp player.h twowaymultisprite.h drawable.h \
   /usr/local/include/SDL2/SDL.h /usr/local/include/SDL2/SDL_main.h \
   /usr/local/include/SDL2/SDL_stdinc.h \
   /usr/local/include/SDL2/SDL_config.h \
@@ -43,7 +43,7 @@ build/player.o: player.cpp player.h multisprite.h drawable.h \
 
 player.h:
 
-multisprite.h:
+twowaymultisprite.h:
 
 drawable.h:
 

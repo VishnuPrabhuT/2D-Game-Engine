@@ -17,9 +17,13 @@ TwoWayMultiSprite::TwoWayMultiSprite( const std::string& name) :
            Vector2f(Gamedata::getInstance().getXmlInt(name+"/speedX"),
                     Gamedata::getInstance().getXmlInt(name+"/speedY"))
            ),
-  imagesRight( RenderContext::getInstance()->getImages(name) ),
-  imagesLeft( RenderContext::getInstance()->getImages(name+"Left") ),
-  images(imagesRight),
+  idleRight( RenderContext::getInstance()->getImages(name) ),
+  idleLeft( RenderContext::getInstance()->getImages(name.substr(0,4)+"Left") ),
+  runRight( RenderContext::getInstance()->getImages("RunRight") ),
+  runLeft( RenderContext::getInstance()->getImages("RunLeft") ),
+  dashRight( RenderContext::getInstance()->getImages("DashRight") ),
+  dashLeft( RenderContext::getInstance()->getImages("DashLeft") ),
+  images(idleRight),
   currentFrame(0),
   numberOfFrames( Gamedata::getInstance().getXmlInt(name+"/frames") ),
   frameInterval( Gamedata::getInstance().getXmlInt(name+"/frameInterval")),
@@ -70,11 +74,11 @@ void TwoWayMultiSprite::update(Uint32 ticks) {
 
   if ( getX() < 0) {
     setVelocityX( fabs( getVelocityX() ) );
-    images=imagesRight;
+    images=idleRight;
   }
   if ( getX() > worldWidth-getScaledWidth()) {
     setVelocityX( -fabs( getVelocityX() ) );
-    images=imagesLeft;
+    images=idleLeft;
   }  
 
 }

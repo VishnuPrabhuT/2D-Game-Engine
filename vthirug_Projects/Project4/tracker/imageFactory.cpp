@@ -103,11 +103,11 @@ std::vector<Image*> ImageFactory::getImages(const std::string& name) {
   int width = spriteSurface->w/numberOfFrames;
   int height = spriteSurface->h;
 
-  if(  gdata.checkTag(name+"/imageWidth") 
+  /*if(  gdata.checkTag(name+"/imageWidth") 
     && gdata.checkTag(name+"/imageHeight") ){
     width  = gdata.getXmlInt(name+"/imageWidth");
     height = gdata.getXmlInt(name+"/imageHeight");
-  }
+  }*/
 
   SpriteSheet sheet(spriteSurface,width,height);
 

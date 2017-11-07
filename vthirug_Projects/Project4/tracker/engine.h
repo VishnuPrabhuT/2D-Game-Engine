@@ -1,6 +1,7 @@
 #include <vector>
 #include <SDL.h>
 #include "ioMod.h"
+#include "hud.h"
 #include "renderContext.h"
 #include "clock.h"
 #include "world.h"
@@ -18,6 +19,7 @@ public:
 private:
   const RenderContext* rc;
   const IOmod& io;
+  const HUD& hud;
   Clock& clock;
 
   SDL_Renderer * const renderer;
@@ -31,6 +33,8 @@ private:
   std::vector<Drawable*> polyVector;	
   int currentSprite;
 
+  bool showHUD;
+  bool initialFlag;
   bool makeVideo;
 
   void draw() const;

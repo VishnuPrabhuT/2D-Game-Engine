@@ -24,7 +24,7 @@ float Gamedata::getRandFloat(float min, float max) const {
   return min + (rand() / (RAND_MAX + 1.0f)) * (max - min);
 }
 
-bool  Gamedata::checkTag(const std::string& tag)const{
+bool  Gamedata::checkTag(const std::string& tag) const {
   return gameData.count(tag)!=0;
 }
 
