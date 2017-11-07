@@ -27,10 +27,7 @@ std::ostream& operator<<(std::ostream& out, const string& s) {
 }
 
 int main() {
-  string a("dog"), b(a);
-  a = b;
-  //std::cout << a << std::endl;
-  operator<<(std::cout, a);
-  std::cout << std::endl;
+  string a("dog");
+  std::cout << a << std::endl;
 
 }
