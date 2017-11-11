@@ -18,7 +18,7 @@ TwoWayMultiSprite::TwoWayMultiSprite( const std::string& name) :
                     Gamedata::getInstance().getXmlInt(name+"/speedY"))
            ),
   idleRight( RenderContext::getInstance()->getImages(name) ),
-  idleLeft( RenderContext::getInstance()->getImages(name.substr(0,4)+"Left") ),
+  idleLeft( RenderContext::getInstance()->getImages("IdleLeft") ),
   runRight( RenderContext::getInstance()->getImages("RunRight") ),
   runLeft( RenderContext::getInstance()->getImages("RunLeft") ),
   dashRight( RenderContext::getInstance()->getImages("DashRight") ),

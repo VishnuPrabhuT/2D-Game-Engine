@@ -136,6 +136,19 @@
   <transparency>false</transparency>
 </DashLeft>
 
+<BlueMonster>
+  <file>assets/Monsters/BlueMonster.png</file>
+  <startLoc x="700" y="300"/>
+  <frames>2</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>500</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>50</safeDistance>
+  <transparency>false</transparency>
+</BlueMonster>
+
 <ShockMe>
   <file>assets/ShockMe.png</file>
   <startLoc x="700" y="200"/>

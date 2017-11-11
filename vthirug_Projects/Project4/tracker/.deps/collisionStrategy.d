@@ -1,4 +1,4 @@
-build/player.o: player.cpp player.h twowaymultisprite.h drawable.h \
+build/collisionStrategy.o: collisionStrategy.cpp ioMod.h \
   /usr/local/include/SDL2/SDL.h /usr/local/include/SDL2/SDL_main.h \
   /usr/local/include/SDL2/SDL_stdinc.h \
   /usr/local/include/SDL2/SDL_config.h \
@@ -39,14 +39,12 @@ build/player.o: player.cpp player.h twowaymultisprite.h drawable.h \
   /usr/local/include/SDL2/SDL_render.h \
   /usr/local/include/SDL2/SDL_system.h \
   /usr/local/include/SDL2/SDL_timer.h \
-  /usr/local/include/SDL2/SDL_version.h vector2f.h image.h smartSprite.h \
-  gamedata.h parseXML.h renderContext.h imageFactory.h spriteSheet.h
+  /usr/local/include/SDL2/SDL_version.h \
+  /usr/local/include/SDL2/SDL_ttf.h collisionStrategy.h drawable.h \
+  vector2f.h image.h viewport.h gamedata.h parseXML.h renderContext.h \
+  imageFactory.h spriteSheet.h
 
-player.h:
-
-twowaymultisprite.h:
-
-drawable.h:
+ioMod.h:
 
 /usr/local/include/SDL2/SDL.h:
 
@@ -134,11 +132,17 @@ drawable.h:
 
 /usr/local/include/SDL2/SDL_version.h:
 
+/usr/local/include/SDL2/SDL_ttf.h:
+
+collisionStrategy.h:
+
+drawable.h:
+
 vector2f.h:
 
 image.h:
 
-smartSprite.h:
+viewport.h:
 
 gamedata.h:
 

@@ -18,7 +18,7 @@ void SmartSprite::goDown()  { setVelocityY( fabs(getVelocityY()) );  }
 
 
 SmartSprite::SmartSprite(const std::string& name, const Vector2f& pos, int w, int h) :
-  Sprite(name),
+  TwoWayMultiSprite(name),
   playerPos(pos),
   playerWidth(w),
   playerHeight(h),
@@ -28,7 +28,7 @@ SmartSprite::SmartSprite(const std::string& name, const Vector2f& pos, int w, in
 
 
 SmartSprite::SmartSprite(const SmartSprite& s) : 
-  Sprite(s),
+  TwoWayMultiSprite(s),
   playerPos(s.playerPos),
   playerWidth(s.playerWidth),
   playerHeight(s.playerHeight),
@@ -37,7 +37,7 @@ SmartSprite::SmartSprite(const SmartSprite& s) :
 {}
 
 void SmartSprite::update(Uint32 ticks) { 
-  Sprite::update(ticks);
+  TwoWayMultiSprite::update(ticks);
   float x= getX()+getImage()->getWidth()/2;
   float y= getY()+getImage()->getHeight()/2;
   float ex= playerPos[0]+playerWidth/2;

@@ -8,7 +8,7 @@ const int MAX = 20;
 class Number {
 public:
   Number() : number(0) { }
-  explicit Number(int n) : number(n) { }
+  Number(int n) : number(n) { }
   Number(const Number& a) : number(a.number) { }
   int getNumber() const { return number; }
   bool operator<(const Number& rhs) const { return number < rhs.number; }
@@ -31,7 +31,7 @@ private:
 
 void init(std::list<Number*> & numberList) {
   for (unsigned int i = 0; i < MAX; ++i) {
-    numberList.push_back( new Number(i) );
+    numberList.push_back(new Number(i));
   }
 }
 

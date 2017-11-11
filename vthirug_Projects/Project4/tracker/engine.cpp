@@ -11,12 +11,14 @@
 #include "engine.h"
 #include "frameGenerator.h"
 #include "player.h"
+#include "collisionStrategy.h"
+#include "smartSprite.h"
 
 Engine::~Engine() { 
   //delete star;
-  for (auto sprite:polyVector){
-   delete sprite;  
-  }
+  //for (auto sprite:polyVector){
+   //delete sprite;  
+  //}
   delete player;
   //delete spinningStar;
   std::cout << "Terminating program" << std::endl;
@@ -35,17 +37,30 @@ Engine::Engine() :
   hills5("hills5", Gamedata::getInstance().getXmlInt("hills5/factor") ),
   viewport( Viewport::getInstance() ),
   player(new Player("IdleRight")),
-  currentSprite(0),
+  sprites(),
+  strategies(),
+  currentStrategy(0),
+  collision(false),
+  //currentSprite(0),
   showHUD(true),
   initialFlag(true),
   makeVideo( false )
 {
-  //polyVector.reserve(4);
-  //polyVector.emplace_back(new TwoWayMultiSprite("IdleRight"));
-  //polyVector.emplace_back(new TwoWayMultiSprite("IdleLeft"));
-  //polyVector.emplace_back(new MultiSprite("Goku"));
-  //polyVector.emplace_back(new MultiSprite("Aura"));
-  //polyVector.emplace_back(new Sprite("ShockMe"));
+  
+  sprites.reserve(2);
+  Vector2f pos = player->getPosition();
+  int w = player->getScaledWidth();
+  int h = player->getScaledHeight();
+  //for (int i = 0; i < 2; ++i) {
+    sprites.push_back( new SmartSprite("BlueMonster", pos, w, h) );
+    player->attach( sprites[0] );
+  //}
+
+  strategies.push_back( new RectangularCollisionStrategy );
+  strategies.push_back( new PerPixelCollisionStrategy );
+  strategies.push_back( new MidPointCollisionStrategy );
+
+
   Viewport::getInstance().setObjectToTrack(player);
   std::cout << "Loading complete" << std::endl;
 }
@@ -57,13 +72,16 @@ void Engine::draw() const {
   hills4.draw();
   hills5.draw();
 
-  for (auto sprite:polyVector){
-    sprite->draw();  
-  }
+  //for ( const Drawable* sprite : sprites ) {
+    sprites[0]->draw();
+  //}  
   
-  //spinningStar->draw();
+  strategies[currentStrategy]->draw();
+  if ( collision ) {
+    IOmod::getInstance().writeText("Oops: Collision", 500, 90);
+  }
+
   player->draw();
-  //std::cout<<clock.getElapsedTicks();
   if(showHUD){
     io.writeText(hud.getText(),30, 350,{0xff, 255, 255, 255});
   }
@@ -71,32 +89,32 @@ void Engine::draw() const {
   SDL_RenderPresent(renderer);
 }
 
-void Engine::update(Uint32 ticks) {
-  //std::cout<<clock.getTicks()<<"-";
-  player->update(ticks);
-  for (auto sprite:polyVector)
-  {
-    sprite->update(ticks);  
+void Engine::checkForCollisions() {
+  auto it = sprites.begin();
+  while ( it != sprites.end() ) {
+    if ( strategies[currentStrategy]->execute(*player, **it) ) {
+      SmartSprite* doa = *it;
+      player->detach(doa);
+      delete doa;
+      it = sprites.erase(it);
+    }
+    else ++it;
   }
-  //star->update(ticks);
-  //spinningStar->update(ticks);
+}
+
+void Engine::update(Uint32 ticks) {
+  checkForCollisions();
+  player->update(ticks);
+  for ( Drawable* sprite : sprites ) {
+    sprite->update( ticks );
+  }
+
   hills1.update();
   hills2.update();
   hills3.update();
   hills4.update();
   hills5.update();
   viewport.update(); // always update viewport last
-}
-
-void Engine::switchSprite(){
-  ++currentSprite;
-  currentSprite = currentSprite % 2;
-  if ( currentSprite ) {
-    Viewport::getInstance().setObjectToTrack(polyVector[currentSprite]);
-  }
-  else {
-    Viewport::getInstance().setObjectToTrack(polyVector[currentSprite]);
-  }
 }
 
 void Engine::play() {
@@ -127,8 +145,8 @@ void Engine::play() {
           if ( clock.isPaused() ) clock.unpause();
           else clock.pause();
         }
-        if ( keystate[SDL_SCANCODE_T] ) {
-          switchSprite();
+        if ( keystate[SDL_SCANCODE_M] ) {
+          currentStrategy = (1 + currentStrategy) % strategies.size();
         }
         if (keystate[SDL_SCANCODE_F4] && !makeVideo) {
           std::cout << "Initiating frame capture" << std::endl;

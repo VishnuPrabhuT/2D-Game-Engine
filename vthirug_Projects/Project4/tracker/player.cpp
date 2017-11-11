@@ -1,14 +1,19 @@
 #include "player.h"
+#include "smartSprite.h"
+#include "gamedata.h"
+#include "renderContext.h"
 
 Player::Player( const std::string& name) :
   TwoWayMultiSprite(name),
+  observers(),
   collision(false),
   moving(false),
   initialVelocity(getVelocity())
 { }
 
 Player::Player(const Player& s) :
-  TwoWayMultiSprite(s), 
+  TwoWayMultiSprite(s),
+  observers(s.observers), 
   collision(s.collision),
   moving(s.moving),
   initialVelocity(s.getVelocity())
@@ -57,8 +62,25 @@ void Player::down()  {
   }
 }
 
+void Player::detach( SmartSprite* o ) {
+  std::list<SmartSprite*>::iterator ptr = observers.begin();
+  while ( ptr != observers.end() ) {
+    if ( *ptr == o ) {
+      ptr = observers.erase(ptr);
+      return;
+    }
+    ++ptr;
+  }
+}
+
 void Player::update(Uint32 ticks) {
   if ( !collision ) advanceFrame(ticks);  
+  TwoWayMultiSprite::update(ticks);
+  std::list<SmartSprite*>::iterator ptr = observers.begin();
+  while ( ptr != observers.end() ) {
+    (*ptr)->setPlayerPos( getPosition() );
+    ++ptr;
+  }
   Vector2f incr = getVelocity() * static_cast<float>(ticks) * 0.001;
   moving=incr[0]>0;  
   //Face right direction after stopping

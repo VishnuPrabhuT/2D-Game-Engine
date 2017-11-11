@@ -5,11 +5,11 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <vector>
+#include <map>
 const int MAX = 10;
 
 int main() {
-  std::vector<int> vec;
+  std::map<int,int> vec;
   vec.push_back(2);
   for (int i = 0; i < MAX; ++i) {
     vec.push_back( rand()%100 );

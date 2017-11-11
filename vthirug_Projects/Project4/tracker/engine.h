@@ -8,13 +8,14 @@
 #include "viewport.h"
 
 class Player;
+class CollisionStrategy;
+class SmartSprite;
 
 class Engine {
 public:
   Engine ();
   ~Engine ();
   void play();
-  void switchSprite();
 
 private:
   const RenderContext* rc;
@@ -30,8 +31,10 @@ private:
   World hills5;
   Viewport& viewport;
   Player* player;
-  std::vector<Drawable*> polyVector;	
-  int currentSprite;
+  std::vector<SmartSprite*> sprites;
+  std::vector<CollisionStrategy*> strategies;
+  int currentStrategy;
+  bool collision;
 
   bool showHUD;
   bool initialFlag;

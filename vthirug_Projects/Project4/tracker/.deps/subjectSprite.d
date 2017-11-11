@@ -1,5 +1,6 @@
-build/player.o: player.cpp player.h twowaymultisprite.h drawable.h \
-  /usr/local/include/SDL2/SDL.h /usr/local/include/SDL2/SDL_main.h \
+build/subjectSprite.o: subjectSprite.cpp subjectSprite.h multisprite.h \
+  drawable.h /usr/local/include/SDL2/SDL.h \
+  /usr/local/include/SDL2/SDL_main.h \
   /usr/local/include/SDL2/SDL_stdinc.h \
   /usr/local/include/SDL2/SDL_config.h \
   /usr/local/include/SDL2/SDL_platform.h \
@@ -40,11 +41,12 @@ build/player.o: player.cpp player.h twowaymultisprite.h drawable.h \
   /usr/local/include/SDL2/SDL_system.h \
   /usr/local/include/SDL2/SDL_timer.h \
   /usr/local/include/SDL2/SDL_version.h vector2f.h image.h smartSprite.h \
-  gamedata.h parseXML.h renderContext.h imageFactory.h spriteSheet.h
+  twowaymultisprite.h gamedata.h parseXML.h renderContext.h \
+  imageFactory.h spriteSheet.h
 
-player.h:
+subjectSprite.h:
 
-twowaymultisprite.h:
+multisprite.h:
 
 drawable.h:
 
@@ -139,6 +141,8 @@ vector2f.h:
 image.h:
 
 smartSprite.h:
+
+twowaymultisprite.h:
 
 gamedata.h:
 

@@ -26,18 +26,20 @@ bool nameFound(const std::map<std::string, int>& mymap,
 
 int main() {
   srand( time(0) );
-  std::vector<std::string> names = {"Red Oak", "Sugar Maple", "Chestnut"};
+  std::vector<std::string> names;
+  names.push_back("Red Oak");
+  // = {"Red Oak", "Sugar Maple", "Chestnut"};
   std::map<std::string, int> mymap;
   init(mymap, names);
-  names.push_back("Ash");
+  //names.push_back("Red Oak");
   names.push_back("Cedar");
   names.push_back("Elm");
   print(mymap);
 
   int index = rand()%names.size();
 
-  if ( nameFound(mymap, names, index) ) {
-    std::cout << names[index] << " found" << std::endl;
+  if ( nameFound(mymap, names, 0) ) {
+    std::cout << names[0] << " found" << std::endl;
   }
   else {
     std::cout << names[index] << " not found" << std::endl;
