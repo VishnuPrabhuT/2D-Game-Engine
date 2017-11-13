@@ -15,12 +15,7 @@
 #include "smartSprite.h"
 
 Engine::~Engine() {
-  //delete star;
-  //for (auto sprite:polyVector){
-   //delete sprite;
-  //}
   delete player;
-  //delete spinningStar;
   std::cout << "Terminating program" << std::endl;
 }
 
@@ -50,7 +45,8 @@ Engine::Engine() :
   Vector2f pos = player->getPosition();
   int w = player->getScaledWidth();
   int h = player->getScaledHeight();
-  sprites.push_back( new SmartSprite("BlueMonster", pos, w, h) );//auto it = sprites.begin();
+  sprites.push_back( new SmartSprite("BlueMonsterRight", pos, w, h) );
+  sprites.push_back( new SmartSprite("BlueMonsterGroundRight", pos, w, h) );
   for (int i = 0; i < 2; ++i) {
     player->attach( sprites[i] );
   }
@@ -58,7 +54,6 @@ Engine::Engine() :
   strategies.push_back( new RectangularCollisionStrategy );
   strategies.push_back( new PerPixelCollisionStrategy );
   strategies.push_back( new MidPointCollisionStrategy );
-
 
   Viewport::getInstance().setObjectToTrack(player);
   std::cout << "Loading complete" << std::endl;
@@ -82,7 +77,19 @@ void Engine::draw() const {
 
   player->draw();
   if(showHUD){
-    io.writeText(hud.getText(), 30, 350,{0xff, 255, 255, 255});
+    SDL_SetRenderDrawColor(renderer,0,0,0,255);
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+    SDL_Rect body = {30, 125, 220, 175};
+    SDL_RenderFillRect( renderer, &body );
+
+    std::string s = hud.getText();
+    std::istringstream ss(s);
+    std::string token;
+    int y=150;
+    while(std::getline(ss, token, '$')) {
+      y+=25;
+      io.writeText(token, 30, y,{0xff, 0, 0, 0});
+    }
   }
   viewport.draw();
   SDL_RenderPresent(renderer);
@@ -95,25 +102,14 @@ void Engine::checkForCollisions() {
     if ( strategies[currentStrategy]->execute(*player, **it) ) {
       collision=true;
       SmartSprite* doa = *it;
-      player->detach(*it);
+      player->detach(doa);
       delete doa;
       it=sprites.erase(it);
     }
     else{
       ++it;
     }
-
   }
-  //auto it = sprites.begin();
-  /*while ( it != sprites.end() ) {
-    if ( strategies[currentStrategy]->execute(*player, **it) ) {
-      SmartSprite* doa = *it;
-      player->detach(doa);
-      delete doa;
-      it = sprites.erase(it);
-    }
-    else ++it;
-  }*/
 }
 
 void Engine::update(Uint32 ticks) {

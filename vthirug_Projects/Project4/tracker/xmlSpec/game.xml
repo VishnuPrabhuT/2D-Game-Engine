@@ -12,12 +12,12 @@
 <username>vthirug</username>
 
 <view>
-  <width>1500</width>
+  <width>800</width>
   <height>180</height>
 </view>
 
 <world>
-  <width>2000</width>
+  <width>2400</width>
   <height>200</height>
 </world>
 
@@ -61,7 +61,8 @@
 </font>
 
 <HUD>
-  <instructions>WASD</instructions>
+  <instructions>  To Move - A and D $     Dash - Space
+  </instructions>
 </HUD>
 
 <IdleRight>
@@ -121,7 +122,7 @@
   <frameInterval>200</frameInterval>
   <speedX>150</speedX>
   <speedY>150</speedY>
-  <transparency>true</transparency>
+  <transparency>false</transparency>
 </DashRight>
 
 <DashLeft>
@@ -133,21 +134,60 @@
   <frameInterval>200</frameInterval>
   <speedX>150</speedX>
   <speedY>150</speedY>
-  <transparency>true</transparency>
+  <transparency>false</transparency>
 </DashLeft>
 
-<BlueMonster>
-  <file>assets/Monsters/BlueMonster.png</file>
-  <startLoc x="700" y="300"/>
+<BlueMonsterGroundLeft>
+  <file>assets/Monsters/BlueMonsterGroundLeft.png</file>
+  <startLoc x="700" y="250"/>
   <frames>2</frames>
-  <imageWidth>50</imageWidth>
-  <imageHeight>60</imageHeight>
+  <imageWidth>10</imageWidth>
+  <imageHeight>10</imageHeight>
   <frameInterval>500</frameInterval>
   <speedX>0</speedX>
   <speedY>0</speedY>
-  <safeDistance>50</safeDistance>
+  <safeDistance>150</safeDistance>
   <transparency>false</transparency>
-</BlueMonster>
+</BlueMonsterGroundLeft>
+
+<BlueMonsterGroundRight>
+  <file>assets/Monsters/BlueMonsterGroundRight.png</file>
+  <startLoc x="1000" y="330"/>
+  <frames>2</frames>
+  <imageWidth>10</imageWidth>
+  <imageHeight>10</imageHeight>
+  <frameInterval>500</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</BlueMonsterGroundRight>
+
+<BlueMonsterLeft>
+  <file>assets/Monsters/BlueMonsterLeft.png</file>
+  <startLoc x="700" y="250"/>
+  <frames>2</frames>
+  <imageWidth>10</imageWidth>
+  <imageHeight>10</imageHeight>
+  <frameInterval>500</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</BlueMonsterLeft>
+
+<BlueMonsterRight>
+  <file>assets/Monsters/BlueMonsterRight.png</file>
+  <startLoc x="700" y="250"/>
+  <frames>2</frames>
+  <imageWidth>10</imageWidth>
+  <imageHeight>10</imageHeight>
+  <frameInterval>500</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</BlueMonsterRight>
 
 <ShockMe>
   <file>assets/ShockMe.png</file>
