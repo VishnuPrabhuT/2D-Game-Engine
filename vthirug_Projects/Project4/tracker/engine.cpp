@@ -16,6 +16,12 @@
 
 Engine::~Engine() {
   delete player;
+  for (auto sprite:sprites){
+    delete sprite;
+  }
+  for (auto strategy:strategies){
+    delete strategy;
+  }
   std::cout << "Terminating program" << std::endl;
 }
 
@@ -34,7 +40,7 @@ Engine::Engine() :
   player(new Player("IdleRight")),
   sprites(),
   strategies(),
-  currentStrategy(1),
+  currentStrategy(Gamedata::getInstance().getXmlInt("CollisionStrategy/PerPixelCollisionStrategy")),
   collision(false),
   //currentSprite(0),
   showHUD(true),
@@ -81,7 +87,6 @@ void Engine::draw() const {
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     SDL_Rect body = {30, 125, 220, 175};
     SDL_RenderFillRect( renderer, &body );
-
     std::string s = hud.getText();
     std::istringstream ss(s);
     std::string token;
@@ -118,7 +123,6 @@ void Engine::update(Uint32 ticks) {
   for ( Drawable* sprite : sprites ) {
     sprite->update( ticks );
   }
-
   hills1.update();
   hills2.update();
   hills3.update();

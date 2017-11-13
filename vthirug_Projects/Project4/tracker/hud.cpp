@@ -13,4 +13,6 @@ HUD::HUD():instructions(Gamedata::getInstance().getXmlStr("HUD/instructions")){
 
 }
 
-HUD::~HUD() { }
+HUD::~HUD() {
+	
+}

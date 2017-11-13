@@ -8,6 +8,12 @@
 <frameCapOn>true</frameCapOn>
 <period>17</period>
 
+<CollisionStrategy>
+  <RectangularCollisionStrategy>0</RectangularCollisionStrategy>
+  <PerPixelCollisionStrategy>1</PerPixelCollisionStrategy>
+  <MidPointCollisionStrategy>2</MidPointCollisionStrategy>
+</CollisionStrategy>
+
 <maxFrames>500</maxFrames>
 <username>vthirug</username>
 
