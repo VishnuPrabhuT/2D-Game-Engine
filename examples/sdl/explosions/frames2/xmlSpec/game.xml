@@ -1,0 +1,90 @@
+<?xml version = "1.0"?>
+<GameData>
+<!-- screenTitle is also used to identify you and your animation. 
+     So make sure to include your name as part of the screenTitle -->
+<title>Fiery Explosion</title>
+<maxStringSize>50</maxStringSize>
+
+<frameCapOn>true</frameCapOn>
+<period>17</period>
+
+<frameMax>200</frameMax>
+<username>malloy</username>
+
+<view>
+  <width>854</width>
+  <height>480</height>
+</view>
+
+<world>
+  <width>854</width>
+  <height>480</height>
+</world>
+
+<back>
+  <file>images/white.png</file>
+  <factor>1</factor>
+  <transparency>false</transparency>
+</back>
+
+<font name="font">
+  <file>fonts/arial.ttf</file>
+  <size>24</size>
+  <red>0</red>
+  <green>0</green>
+  <blue>255</blue>
+  <alpha>0</alpha>
+</font>
+
+<spinstar>
+  <file>images/spinstar.png</file>
+  <startLoc x="120" y="140"/>
+  <frames>4</frames>
+  <frameInterval>20</frameInterval>
+  <speedX>-200</speedX>
+  <speedY>200</speedY>
+  <transparency>true</transparency>
+</spinstar>
+
+
+<explode1>
+  <file>images/explode1.png</file>
+  <startLoc x="460" y="270"/>
+  <frames>20</frames>
+  <frameInterval>200</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <frameWidth>96</frameWidth>
+  <frameHeight>96</frameHeight>
+  <transparency>true</transparency>
+</explode1>
+
+<explode2>
+  <file>images/explode2.png</file>
+  <startLoc x="200" y="250"/>
+  <frames>24</frames>
+  <frameInterval>200</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <frameWidth>128</frameWidth>
+  <frameHeight>128</frameHeight>
+  <transparency>true</transparency>
+</explode2>
+
+<star>
+  <file>images/yellowstar32.png</file>
+  <startLoc x="10" y="10"/>
+  <speedX>-175</speedX>
+  <speedY>-175</speedY>
+  <transparency>true</transparency>
+</star>
+
+<greenorb>
+  <file>images/greenball.bmp</file>
+  <startLoc x="320" y="240"/>
+  <speedX>175</speedX>
+  <speedY>175</speedY>
+  <transparency>true</transparency>
+</greenorb>
+
+</GameData>
