@@ -14,7 +14,7 @@ bool RectangularCollisionStrategy::execute(
       const Drawable& sprite1, const Drawable& sprite2) const {
   float left1 = sprite1.getX();
   float left2 = sprite2.getX();
-
+  std::std::cout << "Here!" << std::endl;
   float right1 = left1+sprite1.getScaledWidth();
   float right2 = left2+sprite2.getScaledWidth();
   if ( right1 < left2 ) return false;
@@ -116,10 +116,10 @@ bool PerPixelCollisionStrategy::execute(
   Uint16 width2 = obj2.getScaledWidth();
   Uint16 height2 = obj2.getScaledHeight();
 
-  int o1Left = p1[0]; 
+  int o1Left = p1[0];
   int o1Right = o1Left+width1;
 
-  int o2Left = p2[0]; 
+  int o2Left = p2[0];
   int o2Right = o2Left+width2;
   std::vector<int> sides;
   sides.reserve(4);
@@ -142,9 +142,9 @@ bool PerPixelCollisionStrategy::execute(
   lids.push_back( o2Down );
   std::sort( lids.begin(), lids.end() );
 
-  const SDL_Surface* temp1 = obj1.getSurface(); 
+  const SDL_Surface* temp1 = obj1.getSurface();
   SDL_Surface* surface1 = scaleSurface(temp1, width1, height1);
-  const SDL_Surface* temp2 = obj2.getSurface(); 
+  const SDL_Surface* temp2 = obj2.getSurface();
   SDL_Surface* surface2 = scaleSurface(temp2, width2, height2);
 
   SDL_LockSurface(surface1);
@@ -179,4 +179,3 @@ bool PerPixelCollisionStrategy::execute(
 
   return false;
 }
-

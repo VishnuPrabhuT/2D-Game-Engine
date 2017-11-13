@@ -1,6 +1,6 @@
 <?xml version = "1.0"?>
 <GameData>
-<!-- screenTitle is also used to identify you and your animation. 
+<!-- screenTitle is also used to identify you and your animation.
      So make sure to include your name as part of the screenTitle -->
 <title>Easter</title>
 <maxStringSize>50</maxStringSize>
@@ -107,8 +107,8 @@
   <imageWidth>50</imageWidth>
   <imageHeight>60</imageHeight>
   <frameInterval>100</frameInterval>
-  <speedX>150</speedX>
-  <speedY>150</speedY>
+  <speedX>100</speedX>
+  <speedY>100</speedY>
   <transparency>false</transparency>
 </RunLeft>
 
@@ -121,7 +121,7 @@
   <frameInterval>200</frameInterval>
   <speedX>150</speedX>
   <speedY>150</speedY>
-  <transparency>false</transparency>
+  <transparency>true</transparency>
 </DashRight>
 
 <DashLeft>
@@ -133,7 +133,7 @@
   <frameInterval>200</frameInterval>
   <speedX>150</speedX>
   <speedY>150</speedY>
-  <transparency>false</transparency>
+  <transparency>true</transparency>
 </DashLeft>
 
 <BlueMonster>

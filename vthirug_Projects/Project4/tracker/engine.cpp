@@ -14,10 +14,10 @@
 #include "collisionStrategy.h"
 #include "smartSprite.h"
 
-Engine::~Engine() { 
+Engine::~Engine() {
   //delete star;
   //for (auto sprite:polyVector){
-   //delete sprite;  
+   //delete sprite;
   //}
   delete player;
   //delete spinningStar;
@@ -39,22 +39,21 @@ Engine::Engine() :
   player(new Player("IdleRight")),
   sprites(),
   strategies(),
-  currentStrategy(0),
+  currentStrategy(1),
   collision(false),
   //currentSprite(0),
   showHUD(true),
   initialFlag(true),
   makeVideo( false )
 {
-  
-  sprites.reserve(2);
+  //sprites.reserve(2);
   Vector2f pos = player->getPosition();
   int w = player->getScaledWidth();
   int h = player->getScaledHeight();
-  //for (int i = 0; i < 2; ++i) {
-    sprites.push_back( new SmartSprite("BlueMonster", pos, w, h) );
-    player->attach( sprites[0] );
-  //}
+  sprites.push_back( new SmartSprite("BlueMonster", pos, w, h) );//auto it = sprites.begin();
+  for (int i = 0; i < 2; ++i) {
+    player->attach( sprites[i] );
+  }
 
   strategies.push_back( new RectangularCollisionStrategy );
   strategies.push_back( new PerPixelCollisionStrategy );
@@ -65,17 +64,17 @@ Engine::Engine() :
   std::cout << "Loading complete" << std::endl;
 }
 
-void Engine::draw() const {  
+void Engine::draw() const {
   hills1.draw();
   hills2.draw();
   hills3.draw();
   hills4.draw();
   hills5.draw();
 
-  //for ( const Drawable* sprite : sprites ) {
-    sprites[0]->draw();
-  //}  
-  
+  for ( const Drawable* sprite : sprites ) {
+    sprite->draw();
+  }
+
   strategies[currentStrategy]->draw();
   if ( collision ) {
     IOmod::getInstance().writeText("Oops: Collision", 500, 90);
@@ -83,15 +82,30 @@ void Engine::draw() const {
 
   player->draw();
   if(showHUD){
-    io.writeText(hud.getText(),30, 350,{0xff, 255, 255, 255});
+    io.writeText(hud.getText(), 30, 350,{0xff, 255, 255, 255});
   }
   viewport.draw();
   SDL_RenderPresent(renderer);
 }
 
 void Engine::checkForCollisions() {
-  auto it = sprites.begin();
-  while ( it != sprites.end() ) {
+  collision=false;
+  std::vector<SmartSprite*>::iterator it = sprites.begin();
+  while(it != sprites.end()){
+    if ( strategies[currentStrategy]->execute(*player, **it) ) {
+      collision=true;
+      SmartSprite* doa = *it;
+      player->detach(*it);
+      delete doa;
+      it=sprites.erase(it);
+    }
+    else{
+      ++it;
+    }
+
+  }
+  //auto it = sprites.begin();
+  /*while ( it != sprites.end() ) {
     if ( strategies[currentStrategy]->execute(*player, **it) ) {
       SmartSprite* doa = *it;
       player->detach(doa);
@@ -99,7 +113,7 @@ void Engine::checkForCollisions() {
       it = sprites.erase(it);
     }
     else ++it;
-  }
+  }*/
 }
 
 void Engine::update(Uint32 ticks) {
@@ -164,7 +178,7 @@ void Engine::play() {
     ticks = clock.getElapsedTicks();
     if ( ticks > 0 ) {
       clock.incrFrame();
-      if(keystate[SDL_SCANCODE_A]){        
+      if(keystate[SDL_SCANCODE_A]){
         player->left();
       }
       if(keystate[SDL_SCANCODE_D]){
