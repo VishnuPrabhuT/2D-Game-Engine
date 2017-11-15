@@ -83,11 +83,13 @@ void Engine::draw() const {
 
   player->draw();
   if(showHUD){
+    int width=hud.getWidth();
+    int height=hud.getHeight();
     SDL_SetRenderDrawColor(renderer,0,0,0,255);
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-    SDL_Rect body = {30, 125, 220, 175};
+    SDL_Rect body = {width, height, 220, 175};
     SDL_RenderFillRect( renderer, &body );
-    std::string s = hud.getText();
+    const std::string& s = hud.getText();
     std::istringstream ss(s);
     std::string token;
     int y=150;

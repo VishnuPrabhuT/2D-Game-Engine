@@ -67,8 +67,9 @@
 </font>
 
 <HUD>
-  <instructions>  To Move - A and D $     Dash - Space
-  </instructions>
+  <instructions>  To Move - A and D $     Dash - Space</instructions>
+  <width>110</width>
+  <height>33</height>
 </HUD>
 
 <IdleRight>

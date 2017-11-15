@@ -5,14 +5,22 @@ HUD& HUD::getInstance() {
 		return hud;
 }
 
-std::string HUD::getText() const{
+const std::string& HUD::getText() const{
 	return instructions;
 }
 
-HUD::HUD():instructions(Gamedata::getInstance().getXmlStr("HUD/instructions")){
+int HUD::getHeight() const{
+	return width;
+}
+
+int HUD::getWidth() const{
+	return height;
+}
+
+HUD::HUD():instructions(Gamedata::getInstance().getXmlStr("HUD/instructions")),width(Gamedata::getInstance().getXmlInt("HUD/width")),height(Gamedata::getInstance().getXmlInt("HUD/height")){
 
 }
 
 HUD::~HUD() {
-	
+
 }
