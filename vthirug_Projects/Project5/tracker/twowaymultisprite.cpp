@@ -11,9 +11,9 @@ void TwoWayMultiSprite::advanceFrame(Uint32 ticks) {
 }
 
 TwoWayMultiSprite::TwoWayMultiSprite( const std::string& name) :
-  Drawable(name, 
-           Vector2f(Gamedata::getInstance().getXmlInt(name+"/startLoc/x"), 
-                    Gamedata::getInstance().getXmlInt(name+"/startLoc/y")), 
+  Drawable(name,
+           Vector2f(Gamedata::getInstance().getXmlInt(name+"/startLoc/x"),
+                    Gamedata::getInstance().getXmlInt(name+"/startLoc/y")),
            Vector2f(Gamedata::getInstance().getXmlInt(name+"/speedX"),
                     Gamedata::getInstance().getXmlInt(name+"/speedY"))
            ),
@@ -23,6 +23,9 @@ TwoWayMultiSprite::TwoWayMultiSprite( const std::string& name) :
   runLeft( RenderContext::getInstance()->getImages("RunLeft") ),
   dashRight( RenderContext::getInstance()->getImages("DashRight") ),
   dashLeft( RenderContext::getInstance()->getImages("DashLeft") ),
+  rollRight( RenderContext::getInstance()->getImages("RollRight") ),
+	blueMonsterLeft( RenderContext::getInstance()->getImages("BlueMonsterLeft") ),
+	blueMonsterRight( RenderContext::getInstance()->getImages("BlueMonsterRight") ),
   images(idleRight),
   currentFrame(0),
   numberOfFrames( Gamedata::getInstance().getXmlInt(name+"/frames") ),
@@ -33,7 +36,16 @@ TwoWayMultiSprite::TwoWayMultiSprite( const std::string& name) :
 { }
 
 TwoWayMultiSprite::TwoWayMultiSprite(const TwoWayMultiSprite& s) :
-  Drawable(s), 
+  Drawable(s),
+	idleRight(s.idleRight),
+	idleLeft(s.idleLeft),
+	runRight(s.runRight),
+	runLeft(s.runLeft),
+	dashRight(s.dashRight),
+	dashLeft(s.dashLeft),
+  rollRight(s.rollRight),
+	blueMonsterLeft(s.blueMonsterLeft),
+	blueMonsterRight(s.blueMonsterRight),
   images(s.images),
   currentFrame(s.currentFrame),
   numberOfFrames( s.numberOfFrames ),
@@ -55,11 +67,11 @@ TwoWayMultiSprite& TwoWayMultiSprite::operator=(const TwoWayMultiSprite& s) {
   return *this;
 }
 
-void TwoWayMultiSprite::draw() const { 
+void TwoWayMultiSprite::draw() const {
   images[currentFrame]->draw(getX(), getY(), getScale());
 }
 
-void TwoWayMultiSprite::update(Uint32 ticks) { 
+void TwoWayMultiSprite::update(Uint32 ticks) {
   advanceFrame(ticks);
 
   Vector2f incr = getVelocity() * static_cast<float>(ticks) * 0.001;
@@ -74,11 +86,11 @@ void TwoWayMultiSprite::update(Uint32 ticks) {
 
   if ( getX() < 0) {
     setVelocityX( fabs( getVelocityX() ) );
-    images=idleRight;
+    //images=idleRight;
   }
   if ( getX() > worldWidth-getScaledWidth()) {
     setVelocityX( -fabs( getVelocityX() ) );
-    images=idleLeft;
-  }  
+    //images=idleLeft;
+  }
 
 }

@@ -13,7 +13,7 @@ Player::Player( const std::string& name) :
 
 Player::Player(const Player& s) :
   TwoWayMultiSprite(s),
-  observers(s.observers), 
+  observers(s.observers),
   collision(s.collision),
   moving(s.moving),
   initialVelocity(s.getVelocity())
@@ -26,40 +26,45 @@ Player& Player::operator=(const Player& s) {
   return *this;
 }
 
-void Player::stop() { 
+void Player::stop() {
   setVelocity(Vector2f(0,0));
 }
 
-void Player::right() { 
+void Player::right() {
   images=runRight;
   if ( getX() < worldWidth-getScaledWidth()) {
     setVelocityX(initialVelocity[0]);
   }
-} 
-void Player::left()  { 
+}
+void Player::left()  {
   images=runLeft;
   if ( getX() > 0) {
     setVelocityX(-initialVelocity[0]);
   }
-} 
+}
 void Player::dash()  {
   if(images==runRight || images==idleRight){
     images=dashRight;
     if ( getY() > 0) {
       setVelocityX( initialVelocity[0]*(initialVelocity[0]*0.05) );
     }
-  } 
+  }
   else if(images==runLeft || images==idleLeft){
     images=dashLeft;
     if ( getY() > 0) {
       setVelocityX( -initialVelocity[0]*(initialVelocity[0]*0.05) );
     }
   }
-} 
-void Player::down()  { 
+}
+void Player::roll()  {
+  images=rollRight;
   if ( getY() < worldHeight-getScaledHeight()) {
-    setVelocityY( initialVelocity[1] );
+    setVelocityX( initialVelocity[0] );
   }
+}
+
+void Player::attach( SmartSprite* o ) {
+  observers.push_back(o);
 }
 
 void Player::detach( SmartSprite* o ) {
@@ -74,7 +79,7 @@ void Player::detach( SmartSprite* o ) {
 }
 
 void Player::update(Uint32 ticks) {
-  if ( !collision ) advanceFrame(ticks);  
+  if ( !collision ) advanceFrame(ticks);
   TwoWayMultiSprite::update(ticks);
   std::list<SmartSprite*>::iterator ptr = observers.begin();
   while ( ptr != observers.end() ) {
@@ -82,7 +87,7 @@ void Player::update(Uint32 ticks) {
     ++ptr;
   }
   Vector2f incr = getVelocity() * static_cast<float>(ticks) * 0.001;
-  moving=incr[0]>0;  
+  moving=incr[0]>0;
   //Face right direction after stopping
   if(!moving){
     if(images==runRight || images==dashRight){
@@ -95,4 +100,3 @@ void Player::update(Uint32 ticks) {
   setPosition(getPosition() + incr);
   stop();
 }
-

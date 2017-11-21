@@ -9,7 +9,7 @@
 class SmartSprite;
 
 class Player : public TwoWayMultiSprite {
-public:  
+public:
   Player(const std::string&);
   Player(const Player&);
   virtual void update(Uint32 ticks);
@@ -21,12 +21,12 @@ public:
   void right();
   void left();
   void dash();
-  void down();
+  void roll();
   void stop();
-  void attach( SmartSprite* o ) { observers.push_back(o); } 
+  void attach( SmartSprite* o );
   void detach( SmartSprite* o );
 private:
-  std::list<SmartSprite*> observers;  
+  std::list<SmartSprite*> observers;
   bool collision;
   bool moving;
   Vector2f initialVelocity;

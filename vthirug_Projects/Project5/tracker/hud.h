@@ -10,12 +10,16 @@ class HUD{
 public:
 	static HUD& getInstance();
   	~HUD();
-	std::string getText() const;	
+	const std::string& getText() const;
+	int getWidth() const;
+	int getHeight() const;
 private:
-	HUD(const HUD&);
+	HUD(const HUD&)=delete;
 	HUD();
-  	HUD& operator=(const HUD&);
+  HUD& operator=(const HUD&)=delete;
 	const std::string instructions;
+	int width;
+	int height;
 };
 
 #endif
