@@ -9,21 +9,20 @@
 class TwoWayMultiSprite : public Drawable {
 public:
   TwoWayMultiSprite(const std::string&);
-  TwoWayMultiSprite(const TwoWayMultiSprite&);
 
   virtual void draw() const;
   virtual void update(Uint32 ticks);
 
-  virtual const Image* getImage() const { 
-    return images[currentFrame]; 
+  virtual const Image* getImage() const {
+    return images[currentFrame];
   }
-  int getScaledWidth()  const { 
-    return getScale()*images[currentFrame]->getWidth(); 
-  } 
-  int getScaledHeight()  const { 
-    return getScale()*images[currentFrame]->getHeight(); 
-  } 
-  virtual const SDL_Surface* getSurface() const { 
+  int getScaledWidth()  const {
+    return getScale()*images[currentFrame]->getWidth();
+  }
+  int getScaledHeight()  const {
+    return getScale()*images[currentFrame]->getHeight();
+  }
+  virtual const SDL_Surface* getSurface() const {
     return images[currentFrame]->getSurface();
   }
 
@@ -34,8 +33,10 @@ protected:
   std::vector<Image *> runLeft;
   std::vector<Image *> dashRight;
   std::vector<Image *> dashLeft;
+  std::vector<Image *> blueMonsterLeft;
+  std::vector<Image *> blueMonsterRight;
   std::vector<Image *> images;
-  
+
 
   unsigned currentFrame;
   unsigned numberOfFrames;
@@ -45,6 +46,7 @@ protected:
   int worldHeight;
 
   void advanceFrame(Uint32 ticks);
+  TwoWayMultiSprite(const TwoWayMultiSprite&);
   TwoWayMultiSprite& operator=(const TwoWayMultiSprite&);
 };
 #endif

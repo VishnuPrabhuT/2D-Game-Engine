@@ -14,7 +14,11 @@ int main() {
 void print(const std::map<std::string, int>& mymap) {
   for ( const auto& x : mymap ) {
     std::cout << x.first << ", " << x.second << std::endl;
+<<<<<<< HEAD
 >>>>>>> 4176c7c8cdc4d1d067d5c8be847bbf580297ab9e
+=======
+>>>>>>> d01adda67f0b50d25da75211bdd0a470444a3077
+>>>>>>> 82e2df9edceebe46651df940fbc81a9173f1b59b
   }
 }
 

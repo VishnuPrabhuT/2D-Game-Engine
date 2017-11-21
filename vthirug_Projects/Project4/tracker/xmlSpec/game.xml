@@ -1,6 +1,6 @@
 <?xml version = "1.0"?>
 <GameData>
-<!-- screenTitle is also used to identify you and your animation. 
+<!-- screenTitle is also used to identify you and your animation.
      So make sure to include your name as part of the screenTitle -->
 <title>Easter</title>
 <maxStringSize>50</maxStringSize>
@@ -8,16 +8,22 @@
 <frameCapOn>true</frameCapOn>
 <period>17</period>
 
+<CollisionStrategy>
+  <RectangularCollisionStrategy>0</RectangularCollisionStrategy>
+  <PerPixelCollisionStrategy>1</PerPixelCollisionStrategy>
+  <MidPointCollisionStrategy>2</MidPointCollisionStrategy>
+</CollisionStrategy>
+
 <maxFrames>500</maxFrames>
 <username>vthirug</username>
 
 <view>
-  <width>1500</width>
+  <width>800</width>
   <height>180</height>
 </view>
 
 <world>
-  <width>2000</width>
+  <width>2400</width>
   <height>200</height>
 </world>
 
@@ -61,7 +67,9 @@
 </font>
 
 <HUD>
-  <instructions>WASD</instructions>
+  <instructions>  To Move - A and D $     Dash - Space</instructions>
+  <width>110</width>
+  <height>33</height>
 </HUD>
 
 <IdleRight>
@@ -107,8 +115,8 @@
   <imageWidth>50</imageWidth>
   <imageHeight>60</imageHeight>
   <frameInterval>100</frameInterval>
-  <speedX>150</speedX>
-  <speedY>150</speedY>
+  <speedX>100</speedX>
+  <speedY>100</speedY>
   <transparency>false</transparency>
 </RunLeft>
 
@@ -136,18 +144,57 @@
   <transparency>false</transparency>
 </DashLeft>
 
-<BlueMonster>
-  <file>assets/Monsters/BlueMonster.png</file>
-  <startLoc x="700" y="300"/>
+<BlueMonsterGroundLeft>
+  <file>assets/Monsters/BlueMonsterGroundLeft.png</file>
+  <startLoc x="700" y="250"/>
   <frames>2</frames>
-  <imageWidth>50</imageWidth>
-  <imageHeight>60</imageHeight>
+  <imageWidth>10</imageWidth>
+  <imageHeight>10</imageHeight>
   <frameInterval>500</frameInterval>
   <speedX>0</speedX>
   <speedY>0</speedY>
-  <safeDistance>50</safeDistance>
+  <safeDistance>150</safeDistance>
   <transparency>false</transparency>
-</BlueMonster>
+</BlueMonsterGroundLeft>
+
+<BlueMonsterGroundRight>
+  <file>assets/Monsters/BlueMonsterGroundRight.png</file>
+  <startLoc x="1000" y="330"/>
+  <frames>2</frames>
+  <imageWidth>10</imageWidth>
+  <imageHeight>10</imageHeight>
+  <frameInterval>500</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</BlueMonsterGroundRight>
+
+<BlueMonsterLeft>
+  <file>assets/Monsters/BlueMonsterLeft.png</file>
+  <startLoc x="700" y="250"/>
+  <frames>2</frames>
+  <imageWidth>10</imageWidth>
+  <imageHeight>10</imageHeight>
+  <frameInterval>500</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</BlueMonsterLeft>
+
+<BlueMonsterRight>
+  <file>assets/Monsters/BlueMonsterRight.png</file>
+  <startLoc x="700" y="250"/>
+  <frames>2</frames>
+  <imageWidth>10</imageWidth>
+  <imageHeight>10</imageHeight>
+  <frameInterval>500</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</BlueMonsterRight>
 
 <ShockMe>
   <file>assets/ShockMe.png</file>

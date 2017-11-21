@@ -14,13 +14,14 @@
 #include "collisionStrategy.h"
 #include "smartSprite.h"
 
-Engine::~Engine() { 
-  //delete star;
-  //for (auto sprite:polyVector){
-   //delete sprite;  
-  //}
+Engine::~Engine() {
   delete player;
-  //delete spinningStar;
+  for (auto sprite:sprites){
+    delete sprite;
+  }
+  for (auto strategy:strategies){
+    delete strategy;
+  }
   std::cout << "Terminating program" << std::endl;
 }
 
@@ -39,43 +40,42 @@ Engine::Engine() :
   player(new Player("IdleRight")),
   sprites(),
   strategies(),
-  currentStrategy(0),
+  currentStrategy(Gamedata::getInstance().getXmlInt("CollisionStrategy/PerPixelCollisionStrategy")),
   collision(false),
   //currentSprite(0),
   showHUD(true),
   initialFlag(true),
   makeVideo( false )
 {
-  
-  sprites.reserve(2);
+  //sprites.reserve(2);
   Vector2f pos = player->getPosition();
   int w = player->getScaledWidth();
   int h = player->getScaledHeight();
-  //for (int i = 0; i < 2; ++i) {
-    sprites.push_back( new SmartSprite("BlueMonster", pos, w, h) );
-    player->attach( sprites[0] );
-  //}
+  sprites.push_back( new SmartSprite("BlueMonsterRight", pos, w, h) );
+  sprites.push_back( new SmartSprite("BlueMonsterGroundRight", pos, w, h) );
+  for (int i = 0; i < 2; ++i) {
+    player->attach( sprites[i] );
+  }
 
   strategies.push_back( new RectangularCollisionStrategy );
   strategies.push_back( new PerPixelCollisionStrategy );
   strategies.push_back( new MidPointCollisionStrategy );
 
-
   Viewport::getInstance().setObjectToTrack(player);
   std::cout << "Loading complete" << std::endl;
 }
 
-void Engine::draw() const {  
+void Engine::draw() const {
   hills1.draw();
   hills2.draw();
   hills3.draw();
   hills4.draw();
   hills5.draw();
 
-  //for ( const Drawable* sprite : sprites ) {
-    sprites[0]->draw();
-  //}  
-  
+  for ( const Drawable* sprite : sprites ) {
+    sprite->draw();
+  }
+
   strategies[currentStrategy]->draw();
   if ( collision ) {
     IOmod::getInstance().writeText("Oops: Collision", 500, 90);
@@ -83,22 +83,39 @@ void Engine::draw() const {
 
   player->draw();
   if(showHUD){
-    io.writeText(hud.getText(),30, 350,{0xff, 255, 255, 255});
+    int width=hud.getWidth();
+    int height=hud.getHeight();
+    SDL_SetRenderDrawColor(renderer,0,0,0,255);
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+    SDL_Rect body = {width, height, 220, 175};
+    SDL_RenderFillRect( renderer, &body );
+    const std::string& s = hud.getText();
+    std::istringstream ss(s);
+    std::string token;
+    int y=150;
+    while(std::getline(ss, token, '$')) {
+      y+=25;
+      io.writeText(token, 30, y,{0xff, 0, 0, 0});
+    }
   }
   viewport.draw();
   SDL_RenderPresent(renderer);
 }
 
 void Engine::checkForCollisions() {
-  auto it = sprites.begin();
-  while ( it != sprites.end() ) {
+  collision=false;
+  std::vector<SmartSprite*>::iterator it = sprites.begin();
+  while(it != sprites.end()){
     if ( strategies[currentStrategy]->execute(*player, **it) ) {
+      collision=true;
       SmartSprite* doa = *it;
       player->detach(doa);
       delete doa;
-      it = sprites.erase(it);
+      it=sprites.erase(it);
     }
-    else ++it;
+    else{
+      ++it;
+    }
   }
 }
 
@@ -108,7 +125,6 @@ void Engine::update(Uint32 ticks) {
   for ( Drawable* sprite : sprites ) {
     sprite->update( ticks );
   }
-
   hills1.update();
   hills2.update();
   hills3.update();
@@ -164,7 +180,7 @@ void Engine::play() {
     ticks = clock.getElapsedTicks();
     if ( ticks > 0 ) {
       clock.incrFrame();
-      if(keystate[SDL_SCANCODE_A]){        
+      if(keystate[SDL_SCANCODE_A]){
         player->left();
       }
       if(keystate[SDL_SCANCODE_D]){
