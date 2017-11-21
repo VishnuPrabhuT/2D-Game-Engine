@@ -1,0 +1,225 @@
+<?xml version = "1.0"?>
+<GameData>
+<!-- screenTitle is also used to identify you and your animation. 
+     So make sure to include your name as part of the screenTitle -->
+<title>Easter</title>
+<maxStringSize>50</maxStringSize>
+
+<frameCapOn>true</frameCapOn>
+<period>17</period>
+
+<maxFrames>500</maxFrames>
+<username>vthirug</username>
+
+<view>
+  <width>1500</width>
+  <height>180</height>
+</view>
+
+<world>
+  <width>2000</width>
+  <height>200</height>
+</world>
+
+<hills1>
+  <file>assets/hills/hills1.png</file>
+  <factor>7</factor>
+  <transparency>true</transparency>
+</hills1>
+
+<hills2>
+  <file>assets/hills/hills2.png</file>
+  <factor>6</factor>
+  <transparency>true</transparency>
+</hills2>
+
+<hills3>
+  <file>assets/hills/hills3.png</file>
+  <factor>4</factor>
+  <transparency>true</transparency>
+</hills3>
+
+<hills4>
+  <file>assets/hills/hills4.png</file>
+  <factor>2</factor>
+  <transparency>true</transparency>
+</hills4>
+
+<hills5>
+  <file>assets/hills/hills5.png</file>
+  <factor>1</factor>
+  <transparency>true</transparency>
+</hills5>
+
+<font name="font">
+  <file>fonts/arial.ttf</file>
+  <size>24</size>
+  <red>255</red>
+  <green>0</green>
+  <blue>0</blue>
+  <alpha>0</alpha>
+</font>
+
+<HUD>
+  <instructions>WASD</instructions>
+</HUD>
+
+<IdleRight>
+  <file>assets/Buck/IdleRight.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>4</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>100</frameInterval>
+  <speedX>100</speedX>
+  <speedY>100</speedY>
+  <transparency>false</transparency>
+</IdleRight>
+
+<IdleLeft>
+  <file>assets/Buck/IdleLeft.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>4</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>100</frameInterval>
+  <speedX>100</speedX>
+  <speedY>100</speedY>
+  <transparency>false</transparency>
+</IdleLeft>
+
+<RunRight>
+  <file>assets/Buck/RunRight.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>6</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>100</frameInterval>
+  <speedX>150</speedX>
+  <speedY>150</speedY>
+  <transparency>false</transparency>
+</RunRight>
+
+<RunLeft>
+  <file>assets/Buck/RunLeft.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>6</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>100</frameInterval>
+  <speedX>150</speedX>
+  <speedY>150</speedY>
+  <transparency>false</transparency>
+</RunLeft>
+
+<DashRight>
+  <file>assets/Buck/DashRight.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>6</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>200</frameInterval>
+  <speedX>150</speedX>
+  <speedY>150</speedY>
+  <transparency>false</transparency>
+</DashRight>
+
+<DashLeft>
+  <file>assets/Buck/DashLeft.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>7</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>200</frameInterval>
+  <speedX>150</speedX>
+  <speedY>150</speedY>
+  <transparency>false</transparency>
+</DashLeft>
+
+<BlueMonster>
+  <file>assets/Monsters/BlueMonster.png</file>
+  <startLoc x="700" y="300"/>
+  <frames>2</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>500</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>50</safeDistance>
+  <transparency>false</transparency>
+</BlueMonster>
+
+<ShockMe>
+  <file>assets/ShockMe.png</file>
+  <startLoc x="700" y="200"/>
+  <frames>1</frames>
+  <imageWidth>340</imageWidth>
+  <imageHeight>450</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <transparency>true</transparency>
+</ShockMe>
+
+<Aura>
+  <file>assets/Aura.png</file>
+  <startLoc x="280" y="80"/>
+  <frames>3</frames>
+  <imageWidth>340</imageWidth>
+  <imageHeight>380</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <transparency>false</transparency>
+</Aura>
+
+<Goku>
+  <file>assets/goku.png</file>
+  <startLoc x="395" y="200"/>
+  <frames>3</frames>
+  <imageWidth>121</imageWidth>
+  <imageHeight>300</imageHeight>
+  <frameInterval>500</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <transparency>false</transparency>
+</Goku>
+
+<Charizard>
+  <file>assets/Charizard.png</file>
+  <startLoc x="100" y="100"/>
+  <frames>8</frames>
+  <imageWidth>105.25</imageWidth>
+  <imageHeight>95</imageHeight>
+  <frameInterval>300</frameInterval>
+  <speedX>100</speedX>
+  <speedY>0</speedY>
+  <transparency>false</transparency>
+</Charizard>
+
+<CharizardLeft>
+  <file>assets/CharizardLeft.png</file>
+  <startLoc x="100" y="150"/>
+  <frames>8</frames>
+  <imageWidth>107.25</imageWidth>
+  <imageHeight>95</imageHeight>
+  <frameInterval>300</frameInterval>
+  <speedX>100</speedX>
+  <speedY>0</speedY>
+  <transparency>false</transparency>
+</CharizardLeft>
+
+<!--<Blastoise>
+  <file>assets/Blastoise.png</file>
+  <startLoc x="200" y="150"/>
+  <frames>4</frames>
+  <imageWidth>60</imageWidth>
+  <imageHeight>70</imageHeight>
+  <frameInterval>500</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <transparency>true</transparency>
+</Blastoise>-->
+
+
+</GameData>
