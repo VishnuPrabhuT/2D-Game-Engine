@@ -19,7 +19,7 @@ ShootingSprite::ShootingSprite(const ShootingSprite& s) :
   timeSinceLastFrame(s.timeSinceLastFrame)
 { }
 
-void ShootingSprite::shoot() { 
+void ShootingSprite::shoot() {
   if ( timeSinceLastFrame < bulletInterval ) return;
   float deltaX = getScaledWidth();
   float deltaY = getScaledHeight()/2;
@@ -31,18 +31,17 @@ void ShootingSprite::shoot() {
   timeSinceLastFrame = 0;
 }
 
-void ShootingSprite::draw() const { 
+void ShootingSprite::draw() const {
   Sprite::draw();
   for ( const Bullet& bullet : bullets ) {
     bullet.draw();
   }
 }
 
-void ShootingSprite::update(Uint32 ticks) { 
+void ShootingSprite::update(Uint32 ticks) {
 	timeSinceLastFrame += ticks;
   Sprite::update(ticks);
   for ( Bullet& bullet : bullets ) {
     bullet.update(ticks);
   }
 }
-

@@ -10,7 +10,7 @@
 #include "engine.h"
 #include "frameGenerator.h"
 
-Engine::~Engine() { 
+Engine::~Engine() {
   for ( Drawable* sprite : sprites ) {
     delete sprite;
   }

@@ -6,6 +6,8 @@
 #include <string>
 #include "drawable.h"
 
+class ExplodingSprite;
+
 class TwoWayMultiSprite : public Drawable {
 public:
   TwoWayMultiSprite(const std::string&);
@@ -37,7 +39,6 @@ protected:
   std::vector<Image *> blueMonsterLeft;
   std::vector<Image *> blueMonsterRight;
   std::vector<Image *> images;
-
 
   unsigned currentFrame;
   unsigned numberOfFrames;

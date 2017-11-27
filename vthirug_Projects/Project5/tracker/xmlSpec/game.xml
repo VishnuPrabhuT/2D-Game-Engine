@@ -72,6 +72,18 @@
   <height>33</height>
 </HUD>
 
+<raybeam>
+  <file>assets/Bullets/raybeam.png</file>
+  <interval>300</interval>
+  <distance>320</distance>
+  <startLoc x="100" y="100"/>
+  <minSpeedX>200</minSpeedX>
+  <speedX>200</speedX>
+  <speedY>0</speedY>
+  <strategy>rectangular</strategy>
+  <transparency>true</transparency>
+</raybeam>
+
 <IdleRight>
   <file>assets/Buck/IdleRight.png</file>
   <startLoc x="395" y="400"/>
@@ -81,6 +93,7 @@
   <frameInterval>100</frameInterval>
   <speedX>100</speedX>
   <speedY>100</speedY>
+  <bullet>raybeam</bullet>
   <transparency>false</transparency>
 </IdleRight>
 
@@ -93,6 +106,7 @@
   <frameInterval>100</frameInterval>
   <speedX>100</speedX>
   <speedY>100</speedY>
+  <bullet>raybeam</bullet>
   <transparency>false</transparency>
 </IdleLeft>
 
@@ -105,6 +119,7 @@
   <frameInterval>100</frameInterval>
   <speedX>150</speedX>
   <speedY>150</speedY>
+  <bullet>raybeam</bullet>
   <transparency>false</transparency>
 </RunRight>
 
@@ -117,6 +132,7 @@
   <frameInterval>100</frameInterval>
   <speedX>100</speedX>
   <speedY>100</speedY>
+  <bullet>raybeam</bullet>
   <transparency>false</transparency>
 </RunLeft>
 
@@ -129,6 +145,7 @@
   <frameInterval>200</frameInterval>
   <speedX>150</speedX>
   <speedY>150</speedY>
+  <bullet>raybeam</bullet>
   <transparency>false</transparency>
 </DashRight>
 
@@ -141,18 +158,20 @@
   <frameInterval>200</frameInterval>
   <speedX>150</speedX>
   <speedY>150</speedY>
+  <bullet>raybeam</bullet>
   <transparency>false</transparency>
 </DashLeft>
 
 <RollRight>
   <file>assets/Buck/RollRight.png</file>
   <startLoc x="395" y="400"/>
-  <frames>15</frames>
-  <imageWidth>30</imageWidth>
-  <imageHeight>60</imageHeight>
+  <frames>10</frames>
+  <imageWidth>20</imageWidth>
+  <imageHeight>100</imageHeight>
   <frameInterval>300</frameInterval>
   <speedX>150</speedX>
   <speedY>150</speedY>
+  <bullet>raybeam</bullet>
   <transparency>false</transparency>
 </RollRight>
 
@@ -182,6 +201,23 @@
   <transparency>false</transparency>
 </BlueMonsterGroundRight>
 
+<WaterExplosion>
+  <file>assets/Explosions/WaterExplosion.png</file>
+  <startLoc x="1000" y="300"/>
+  <frames>10</frames>
+  <imageWidth>100</imageWidth>
+  <imageHeight>200</imageHeight>
+  <frameInterval>300</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
+</WaterExplosion>
+
 <BlueMonsterLeft>
   <file>assets/Monsters/BlueMonsterLeft.png</file>
   <startLoc x="700" y="250"/>
@@ -193,6 +229,10 @@
   <speedY>0</speedY>
   <safeDistance>150</safeDistance>
   <transparency>false</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
 </BlueMonsterLeft>
 
 <BlueMonsterRight>
@@ -206,6 +246,10 @@
   <speedY>0</speedY>
   <safeDistance>150</safeDistance>
   <transparency>false</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
 </BlueMonsterRight>
 
 <ShockMe>

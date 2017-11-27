@@ -68,7 +68,7 @@ TwoWayMultiSprite& TwoWayMultiSprite::operator=(const TwoWayMultiSprite& s) {
 }
 
 void TwoWayMultiSprite::draw() const {
-  images[currentFrame]->draw(getX(), getY(), getScale());
+	images[currentFrame]->draw(getX(), getY(), getScale());
 }
 
 void TwoWayMultiSprite::update(Uint32 ticks) {

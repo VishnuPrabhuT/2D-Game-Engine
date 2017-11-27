@@ -25,8 +25,8 @@ private:
   std::map<std::string, std::vector<SDL_Texture*> > multiTextures;
   std::map<std::string, std::vector<Image*> > multiImages;
 
-  ImageFactory() : 
-    gdata( Gamedata::getInstance() ), 
+  ImageFactory() :
+    gdata( Gamedata::getInstance() ),
     surfaces(),
     textures(),
     images(),

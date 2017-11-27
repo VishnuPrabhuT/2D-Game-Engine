@@ -32,6 +32,10 @@ SmartSprite::SmartSprite(const SmartSprite& s) :
   safeDistance(s.safeDistance)
 {}
 
+void SmartSprite::explode() {
+
+}
+
 void SmartSprite::goLeft()  { images = blueMonsterLeft;  }
 void SmartSprite::goRight() { images = blueMonsterRight;  }
 void SmartSprite::goUp()    { setVelocityY( -fabs(getVelocityY()) ); }
@@ -42,8 +46,8 @@ void SmartSprite::update(Uint32 ticks) {
   float x= getX()+getImage()->getWidth()/2;
   float y= getY()+getImage()->getHeight()/2;
   float ex= playerPos[0]+playerWidth/2;
-  float proximity=abs(getPosition()[0]-ex);
-  float ey= playerPos[1]+playerHeight/2;
+  float proximity=std::fabs(getPosition()[0]-ex);
+  int ey= playerPos[1]+playerHeight/2;
   float distanceToEnemy = ::distance( x, y, ex, ey );
   if  ( currentMode == RIGHT ) {
     if(distanceToEnemy < safeDistance) currentMode = LEFT;

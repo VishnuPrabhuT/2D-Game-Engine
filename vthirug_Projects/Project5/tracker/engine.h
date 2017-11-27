@@ -33,9 +33,13 @@ private:
   Player* player;
   std::vector<SmartSprite*> sprites;
   std::vector<CollisionStrategy*> strategies;
+  std::vector<Drawable*> explosionSprites;
+  bool explosion;
+  unsigned int endTime;
+  int currentExplosion;
   int currentStrategy;
   bool collision;
-
+  int currentSprite;
   bool showHUD;
   bool initialFlag;
   bool makeVideo;

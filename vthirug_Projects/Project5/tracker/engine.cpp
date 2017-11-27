@@ -19,6 +19,11 @@ Engine::~Engine() {
   for (auto sprite:sprites){
     delete sprite;
   }
+
+  for (auto sprite:explosionSprites){
+    delete sprite;
+  }
+
   for (auto strategy:strategies){
     delete strategy;
   }
@@ -40,22 +45,27 @@ Engine::Engine() :
   player(new Player("IdleRight")),
   sprites(),
   strategies(),
+  explosionSprites(),
+  explosion(false),
+  endTime(0),
+  currentExplosion(0),
   currentStrategy(Gamedata::getInstance().getXmlInt("CollisionStrategy/PerPixelCollisionStrategy")),
   collision(false),
-  //currentSprite(0),
+  currentSprite(0),
   showHUD(true),
   initialFlag(true),
   makeVideo( false )
 {
-  //sprites.reserve(2);
   Vector2f pos = player->getPosition();
   int w = player->getScaledWidth();
   int h = player->getScaledHeight();
   sprites.push_back( new SmartSprite("BlueMonsterRight", pos, w, h) );
   sprites.push_back( new SmartSprite("BlueMonsterGroundRight", pos, w, h) );
-  for (int i = 0; i < 2; ++i) {
+  for (unsigned long i = 0; i < sprites.size(); ++i) {
     player->attach( sprites[i] );
   }
+
+  explosionSprites.push_back(new MultiSprite("WaterExplosion"));
 
   strategies.push_back( new RectangularCollisionStrategy );
   strategies.push_back( new PerPixelCollisionStrategy );
@@ -75,6 +85,11 @@ void Engine::draw() const {
   for ( const Drawable* sprite : sprites ) {
     sprite->draw();
   }
+
+  if (clock.getTicks()<endTime){
+    explosionSprites[currentExplosion]->draw();
+  }
+
 
   strategies[currentStrategy]->draw();
   if ( collision ) {
@@ -109,6 +124,12 @@ void Engine::checkForCollisions() {
     if ( strategies[currentStrategy]->execute(*player, **it) ) {
       collision=true;
       SmartSprite* doa = *it;
+      doa->explode();
+      if (doa->getName().find("Blue")!=std::string::npos){
+        explosion=true;
+        endTime=clock.getTicks()+2000;
+        currentExplosion=0;
+      }
       player->detach(doa);
       delete doa;
       it=sprites.erase(it);
@@ -124,6 +145,12 @@ void Engine::update(Uint32 ticks) {
   player->update(ticks);
   for ( Drawable* sprite : sprites ) {
     sprite->update( ticks );
+  }
+  if (clock.getTicks()<endTime){
+    explosionSprites[currentExplosion]->update( ticks );
+  }
+  else{
+    explosion=false;
   }
   hills1.update();
   hills2.update();
@@ -191,6 +218,9 @@ void Engine::play() {
       }
       if(keystate[SDL_SCANCODE_R]){
         player->roll();
+      }
+      if ( keystate[SDL_SCANCODE_S] ) {
+        player->shoot();
       }
       draw();
       update(ticks);
