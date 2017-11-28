@@ -11,6 +11,7 @@ Player::Player( const std::string& name) :
   initialVelocity(getVelocity()),
   bulletName( Gamedata::getInstance().getXmlStr(name+"/bullet") ),
   bullets(),
+  freeBullets(),
   minSpeed( Gamedata::getInstance().getXmlInt(bulletName+"/speedX") ),
   bulletInterval(Gamedata::getInstance().getXmlInt(bulletName+"/interval")),
   timeSinceLastFrame(0)
@@ -24,6 +25,7 @@ Player::Player(const Player& s) :
   initialVelocity(s.getVelocity()),
   bulletName(s.bulletName),
   bullets(s.bullets),
+  freeBullets(s.freeBullets),
   minSpeed(s.minSpeed),
   bulletInterval(s.bulletInterval),
   timeSinceLastFrame(s.timeSinceLastFrame)
@@ -41,10 +43,26 @@ void Player::shoot() {
   float deltaX = getScaledWidth();
   float deltaY = getScaledHeight()/2;
   // I need to add some minSpeed to velocity:
-  Bullet bullet(bulletName);
-  bullet.setPosition( getPosition() +Vector2f(deltaX, deltaY) );
-  bullet.setVelocity( getVelocity() + Vector2f(minSpeed, 0) );
-  bullets.push_back( bullet );
+
+  if (freeBullets.empty()) {
+    Bullet bullet(bulletName);
+    freeBullets.push_back( bullet );
+  }
+  else {
+    Bullet b = freeBullets.front();
+    freeBullets.pop_front();
+    b.reset();
+    b.setPosition( getPosition() +Vector2f(deltaX, deltaY) );
+    b.setVelocity( getVelocity() + Vector2f(minSpeed, 0) );
+    bullets.push_back( b );
+  }
+  /*if (bullets.size()>0) {
+    Bullet b = bullets.front();
+    bullets.pop_front();
+    b.reset();
+    freeBullets.push_back( b );
+  }*/
+
   timeSinceLastFrame = 0;
 }
 
@@ -102,12 +120,9 @@ void Player::detach( SmartSprite* o ) {
 
 void Player::draw() const {
   TwoWayMultiSprite::draw();
-  for (Bullet& bullet : bullets ) {
-    if(!bullet.goneTooFar()){
-      bullet.draw();
-    }
-    else{
-      bullets.pop_front();
+  for ( const Bullet& freeBullet : bullets ) {
+    if(!freeBullet.goneTooFar()){
+      freeBullet.draw();
     }
   }
 }
@@ -117,14 +132,31 @@ void Player::update(Uint32 ticks) {
   timeSinceLastFrame += ticks;
   TwoWayMultiSprite::update(ticks);
   //Sprite::update(ticks);
-  for (Bullet& bullet : bullets ) {
-    if(!bullet.goneTooFar()){
-      bullet.update(ticks);
+  std::list<Bullet>::iterator it=bullets.begin();
+  while ( it != bullets.end() ) {
+    if (!it->goneTooFar()){
+      it->update( ticks );
+      std::cout << freeBullets.size() << "\n" << bullets.size() << '\n';
+      ++it;
     }
-    else{
-      bullets.pop_front();
+    else if ( !bullets.empty() ){
+      Bullet b = bullets.front();
+      it=bullets.erase(it);
+      b.reset();
+      freeBullets.push_back( b );
     }
   }
+  /*for ( Bullet& freeBullet : bullets ) {
+    if (!freeBullet.goneTooFar()){
+      freeBullet.update( ticks );
+      std::cout << freeBullets.size()<<"\n"<<bullets.size() << '\n';
+    }
+    else if (freeBullet.goneTooFar()){
+      freeBullet.reset();
+      freeBullets.push_back(freeBullet);
+      bullets.pop_front();
+    }*/
+
   std::list<SmartSprite*>::iterator ptr = observers.begin();
   while ( ptr != observers.end() ) {
     (*ptr)->setPlayerPos( getPosition() );

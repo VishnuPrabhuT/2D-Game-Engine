@@ -37,6 +37,7 @@ private:
   Vector2f initialVelocity;
   std::string bulletName;
   std::list<Bullet> bullets;
+  std::list<Bullet> freeBullets;
   float minSpeed;
   float bulletInterval;
   float timeSinceLastFrame;
