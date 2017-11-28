@@ -72,8 +72,8 @@
   <height>33</height>
 </HUD>
 
-<raybeam>
-  <file>assets/Bullets/raybeam.png</file>
+<Lightning>
+  <file>assets/Bullets/Lightning.png</file>
   <interval>300</interval>
   <distance>320</distance>
   <startLoc x="100" y="100"/>
@@ -81,8 +81,8 @@
   <speedX>200</speedX>
   <speedY>0</speedY>
   <strategy>rectangular</strategy>
-  <transparency>true</transparency>
-</raybeam>
+  <transparency>false</transparency>
+</Lightning>
 
 <IdleRight>
   <file>assets/Buck/IdleRight.png</file>
@@ -93,7 +93,7 @@
   <frameInterval>100</frameInterval>
   <speedX>100</speedX>
   <speedY>100</speedY>
-  <bullet>raybeam</bullet>
+  <bullet>Lightning</bullet>
   <transparency>false</transparency>
 </IdleRight>
 
