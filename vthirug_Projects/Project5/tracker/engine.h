@@ -31,6 +31,7 @@ private:
   World hills5;
   Viewport& viewport;
   Player* player;
+  Player* realPlayer;
   std::vector<SmartSprite*> sprites;
   std::vector<CollisionStrategy*> strategies;
   std::vector<Drawable*> explosionSprites;
@@ -38,14 +39,15 @@ private:
   unsigned int endTime;
   int currentExplosion;
   int currentStrategy;
-  bool collision;
+  bool playerCollision;
   bool gameOver;
   int currentSprite;
   bool showHUD;
   bool initialFlag;
+  bool reset;
   bool makeVideo;
 
-  void draw() const;
+  void draw();
   void update(Uint32);
 
   Engine(const Engine&)=delete;

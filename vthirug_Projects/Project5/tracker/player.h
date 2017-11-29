@@ -31,6 +31,8 @@ public:
   void attach( SmartSprite* o );
   void detach( SmartSprite* o );
   std::list<Bullet>& getBulletList(){ return bullets; }
+  int freeCount(){ return freeBullets.size(); }
+  int bulletCount(){ return bullets.size(); }
 private:
   std::list<SmartSprite*> observers;
   bool collision;

@@ -29,25 +29,25 @@
 
 <hills1>
   <file>assets/hills/hills1.png</file>
-  <factor>7</factor>
+  <factor>12</factor>
   <transparency>true</transparency>
 </hills1>
 
 <hills2>
   <file>assets/hills/hills2.png</file>
-  <factor>6</factor>
+  <factor>9</factor>
   <transparency>true</transparency>
 </hills2>
 
 <hills3>
   <file>assets/hills/hills3.png</file>
-  <factor>4</factor>
+  <factor>6</factor>
   <transparency>true</transparency>
 </hills3>
 
 <hills4>
   <file>assets/hills/hills4.png</file>
-  <factor>2</factor>
+  <factor>3</factor>
   <transparency>true</transparency>
 </hills4>
 
@@ -106,7 +106,7 @@
   <frameInterval>100</frameInterval>
   <speedX>100</speedX>
   <speedY>100</speedY>
-  <bullet>raybeam</bullet>
+  <bullet>Lightning</bullet>
   <transparency>false</transparency>
 </IdleLeft>
 
@@ -119,7 +119,7 @@
   <frameInterval>100</frameInterval>
   <speedX>150</speedX>
   <speedY>150</speedY>
-  <bullet>raybeam</bullet>
+  <bullet>Lightning</bullet>
   <transparency>false</transparency>
 </RunRight>
 
@@ -132,7 +132,7 @@
   <frameInterval>100</frameInterval>
   <speedX>100</speedX>
   <speedY>100</speedY>
-  <bullet>raybeam</bullet>
+  <bullet>Lightning</bullet>
   <transparency>false</transparency>
 </RunLeft>
 
@@ -145,7 +145,7 @@
   <frameInterval>200</frameInterval>
   <speedX>150</speedX>
   <speedY>150</speedY>
-  <bullet>raybeam</bullet>
+  <bullet>Lightning</bullet>
   <transparency>false</transparency>
 </DashRight>
 
@@ -158,7 +158,7 @@
   <frameInterval>200</frameInterval>
   <speedX>150</speedX>
   <speedY>150</speedY>
-  <bullet>raybeam</bullet>
+  <bullet>Lightning</bullet>
   <transparency>false</transparency>
 </DashLeft>
 
@@ -171,7 +171,7 @@
   <frameInterval>300</frameInterval>
   <speedX>150</speedX>
   <speedY>150</speedY>
-  <bullet>raybeam</bullet>
+  <bullet>Lightning</bullet>
   <transparency>false</transparency>
 </RollRight>
 
@@ -226,6 +226,19 @@
   <safeDistance>150</safeDistance>
   <transparency>false</transparency>
 </BlackExplosion>
+
+<PlayerExplosion>
+  <file>assets/Explosions/PlayerExplosion.png</file>
+  <startLoc x="500" y="300"/>
+  <frames>4</frames>
+  <imageWidth>100</imageWidth>
+  <imageHeight>200</imageHeight>
+  <frameInterval>300</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</PlayerExplosion>
 
 <BlueMonsterLeft>
   <file>assets/Monsters/BlueMonsterLeft.png</file>

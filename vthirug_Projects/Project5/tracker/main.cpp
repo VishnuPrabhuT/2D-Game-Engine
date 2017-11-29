@@ -6,8 +6,12 @@ RenderContext* RenderContext::instance = NULL;
 
 int main(int, char*[]) {
    try {
-      Engine engine;
-      engine.play();
+
+      //bool reset=true;
+      //while (reset){
+        Engine engine;
+        engine.play();
+      //}
       delete RenderContext::getInstance();
    }
    catch (const string& msg) { std::cout << msg << std::endl; }

@@ -55,7 +55,7 @@ void Player::shoot() {
     Bullet b = freeBullets.front();
     freeBullets.pop_front();
     b.reset();
-    std::cout << this->getName() << '\n';
+    //std::cout << this->getName() << '\n';
     if(images == runRight || images == idleRight || images == dashRight) {
       b.setPosition( getPosition() + Vector2f(deltaX, deltaY) );
       b.setVelocity( 2*(getVelocity() + Vector2f(minSpeed, 0)));
@@ -139,7 +139,7 @@ void Player::update(Uint32 ticks) {
   while ( it != bullets.end() ) {
     if (!it->goneTooFar()){
       it->update( ticks );
-      std::cout << freeBullets.size() << "\n" << bullets.size() << '\n';
+      //std::cout << freeBullets.size() << "\n" << bullets.size() << '\n';
       ++it;
     }
     else if ( !bullets.empty() ){

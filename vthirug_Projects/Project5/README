@@ -2,21 +2,21 @@ Name: Vishnu Prabhu Thirugnanasambandam
 
 Clemson Email Address: vthirug@clemson.edu
 
-Project no: 4
+Project no: 5
 
-Project due date: 11/13/2017
+Project due date: 11/29/2017
 
-Project description: Creating a HUD, AI NPCs, Collisions and a player
+Project description: Incorporate more action and interaction into your animation
 
-The easiest part of this project: Controlling the player
+The easiest part of this project: Shooting
 
-Problems that I had in completing this project: Had trouble with accessing the right instances of sprite objects
+Problems that I had in completing this project: Explosion by chunks so, used Multisprite explosions and respawning player
 
 Game Description: Easter is the hero of this game trying to save his brother Master(Work in Progress) on the other end blocked by NPCs along the way who drop bombs to hinder the player's progress. Easter will have more powers like roll and lightning strike to take down different types of land monsters. For example, Water(Blue) monsters will be killed by lightning strike.
 
-I'll be adding more NPCs, shooting(with object pooling) and explosions in future iterations.
+I'll make some NPCs shoot downward and add a super move for the player to take out NPCs above.
 
 References:
-1)http://www.fanpop.com/clubs/dragon-ball-z/images/30610750/title/vegeta-vs-pokemon-photo
+1)http://www.l-ateliergourmand.com/images/clipartix.com/wp-content/uploads/2016/05/Zeus-lightning-bolt-clipart.jpg
 2)http://photobucket.com/gallery/user/GMunny5/media/bWVkaWFJZDoxMjIyMTk5MA==/?ref=1
-3)https://spartan-a21.deviantart.com/art/Goku-Transformation-Sprites-676323275
+3)http://kidscancode.org/blog/img/shmup_part10_1.png
