@@ -15,7 +15,10 @@ Player::Player( const std::string& name) :
   minSpeed( Gamedata::getInstance().getXmlInt(bulletName+"/speedX") ),
   bulletInterval(Gamedata::getInstance().getXmlInt(bulletName+"/interval")),
   timeSinceLastFrame(0)
-{ }
+{
+  Bullet bullet(bulletName);
+  freeBullets.push_back( bullet );
+}
 
 Player::Player(const Player& s) :
   TwoWayMultiSprite(s),
@@ -52,17 +55,17 @@ void Player::shoot() {
     Bullet b = freeBullets.front();
     freeBullets.pop_front();
     b.reset();
-    b.setPosition( getPosition() +Vector2f(deltaX, deltaY) );
-    b.setVelocity( getVelocity() + Vector2f(minSpeed, 0) );
+    std::cout << this->getName() << '\n';
+    if(images == runRight || images == idleRight || images == dashRight) {
+      b.setPosition( getPosition() + Vector2f(deltaX, deltaY) );
+      b.setVelocity( 2*(getVelocity() + Vector2f(minSpeed, 0)));
+    }
+    else {
+      b.setPosition( getPosition() + Vector2f(deltaX-150, deltaY) );
+      b.setVelocity((-2)*(-getVelocity() + Vector2f(minSpeed, 0)));
+    }
     bullets.push_back( b );
   }
-  /*if (bullets.size()>0) {
-    Bullet b = bullets.front();
-    bullets.pop_front();
-    b.reset();
-    freeBullets.push_back( b );
-  }*/
-
   timeSinceLastFrame = 0;
 }
 

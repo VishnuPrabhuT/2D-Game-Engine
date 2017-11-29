@@ -212,11 +212,20 @@
   <speedY>0</speedY>
   <safeDistance>150</safeDistance>
   <transparency>false</transparency>
-  <chunk>
-    <size>9</size>
-    <distance>200</distance>
-  </chunk>
 </WaterExplosion>
+
+<BlackExplosion>
+  <file>assets/Explosions/WaterExplosion.png</file>
+  <startLoc x="500" y="300"/>
+  <frames>10</frames>
+  <imageWidth>100</imageWidth>
+  <imageHeight>200</imageHeight>
+  <frameInterval>300</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</BlackExplosion>
 
 <BlueMonsterLeft>
   <file>assets/Monsters/BlueMonsterLeft.png</file>
@@ -229,10 +238,6 @@
   <speedY>0</speedY>
   <safeDistance>150</safeDistance>
   <transparency>false</transparency>
-  <chunk>
-    <size>9</size>
-    <distance>200</distance>
-  </chunk>
 </BlueMonsterLeft>
 
 <BlueMonsterRight>
@@ -246,83 +251,32 @@
   <speedY>0</speedY>
   <safeDistance>150</safeDistance>
   <transparency>false</transparency>
-  <chunk>
-    <size>9</size>
-    <distance>200</distance>
-  </chunk>
 </BlueMonsterRight>
 
-<ShockMe>
-  <file>assets/ShockMe.png</file>
-  <startLoc x="700" y="200"/>
-  <frames>1</frames>
-  <imageWidth>340</imageWidth>
-  <imageHeight>450</imageHeight>
-  <frameInterval>50</frameInterval>
-  <speedX>0</speedX>
-  <speedY>0</speedY>
-  <transparency>true</transparency>
-</ShockMe>
-
-<Aura>
-  <file>assets/Aura.png</file>
-  <startLoc x="280" y="80"/>
-  <frames>3</frames>
-  <imageWidth>340</imageWidth>
-  <imageHeight>380</imageHeight>
-  <frameInterval>50</frameInterval>
-  <speedX>0</speedX>
-  <speedY>0</speedY>
-  <transparency>false</transparency>
-</Aura>
-
-<Goku>
-  <file>assets/goku.png</file>
-  <startLoc x="395" y="200"/>
-  <frames>3</frames>
-  <imageWidth>121</imageWidth>
-  <imageHeight>300</imageHeight>
+<BlackMonsterLeft>
+  <file>assets/Monsters/BlackMonsterLeft.png</file>
+  <startLoc x="500" y="350"/>
+  <frames>2</frames>
+  <imageWidth>10</imageWidth>
+  <imageHeight>10</imageHeight>
   <frameInterval>500</frameInterval>
   <speedX>0</speedX>
   <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
   <transparency>false</transparency>
-</Goku>
+</BlackMonsterLeft>
 
-<Charizard>
-  <file>assets/Charizard.png</file>
-  <startLoc x="100" y="100"/>
-  <frames>8</frames>
-  <imageWidth>105.25</imageWidth>
-  <imageHeight>95</imageHeight>
-  <frameInterval>300</frameInterval>
-  <speedX>100</speedX>
-  <speedY>0</speedY>
-  <transparency>false</transparency>
-</Charizard>
-
-<CharizardLeft>
-  <file>assets/CharizardLeft.png</file>
-  <startLoc x="100" y="150"/>
-  <frames>8</frames>
-  <imageWidth>107.25</imageWidth>
-  <imageHeight>95</imageHeight>
-  <frameInterval>300</frameInterval>
-  <speedX>100</speedX>
-  <speedY>0</speedY>
-  <transparency>false</transparency>
-</CharizardLeft>
-
-<!--<Blastoise>
-  <file>assets/Blastoise.png</file>
-  <startLoc x="200" y="150"/>
-  <frames>4</frames>
-  <imageWidth>60</imageWidth>
-  <imageHeight>70</imageHeight>
+<BlackMonsterRight>
+  <file>assets/Monsters/BlackMonsterRight.png</file>
+  <startLoc x="500" y="350"/>
+  <frames>2</frames>
+  <imageWidth>10</imageWidth>
+  <imageHeight>10</imageHeight>
   <frameInterval>500</frameInterval>
   <speedX>0</speedX>
   <speedY>0</speedY>
-  <transparency>true</transparency>
-</Blastoise>-->
-
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</BlackMonsterRight>
 
 </GameData>

@@ -51,6 +51,7 @@ Engine::Engine() :
   currentExplosion(0),
   currentStrategy(Gamedata::getInstance().getXmlInt("CollisionStrategy/PerPixelCollisionStrategy")),
   collision(false),
+  gameOver(false),
   currentSprite(0),
   showHUD(true),
   initialFlag(true),
@@ -61,11 +62,13 @@ Engine::Engine() :
   int h = player->getScaledHeight();
   sprites.push_back( new SmartSprite("BlueMonsterRight", pos, w, h) );
   sprites.push_back( new SmartSprite("BlueMonsterGroundRight", pos, w, h) );
+  sprites.push_back( new SmartSprite("BlackMonsterRight", pos, w, h) );
   for (unsigned long i = 0; i < sprites.size(); ++i) {
     player->attach( sprites[i] );
   }
 
   explosionSprites.push_back(new MultiSprite("WaterExplosion"));
+  explosionSprites.push_back(new MultiSprite("BlackExplosion"));
 
   strategies.push_back( new RectangularCollisionStrategy );
   strategies.push_back( new PerPixelCollisionStrategy );
@@ -84,19 +87,23 @@ void Engine::draw() const {
 
   for ( const Drawable* sprite : sprites ) {
     sprite->draw();
+    if (clock.getTicks()<endTime){
+      //explosionSprites[currentExplosion]->setPosition(sprite->getPosition());
+      explosionSprites[currentExplosion]->draw();
+    }
   }
-
-  if (clock.getTicks()<endTime){
-    explosionSprites[currentExplosion]->draw();
-  }
-
 
   strategies[currentStrategy]->draw();
   if ( collision ) {
     IOmod::getInstance().writeText("Oops: Collision", 500, 90);
   }
 
-  player->draw();
+  if ( gameOver ) {
+    IOmod::getInstance().writeText("Game Over!", 500, 90);
+  }
+  else {
+    player->draw();
+  }
   if(showHUD){
     int width=hud.getWidth();
     int height=hud.getHeight();
@@ -118,11 +125,11 @@ void Engine::draw() const {
 }
 
 void Engine::checkForCollisions() {
-  collision=false;
+  //gameOver=false;
   std::vector<SmartSprite*>::iterator it = sprites.begin();
   while(it != sprites.end()){
     if ( strategies[currentStrategy]->execute(*player, **it) ) {
-      collision=true;
+      gameOver=true;
       SmartSprite* doa = *it;
       doa->explode();
       if (doa->getName().find("Blue")!=std::string::npos){
@@ -134,23 +141,58 @@ void Engine::checkForCollisions() {
       delete doa;
       it=sprites.erase(it);
     }
-    else{
+    else {
       ++it;
     }
   }
 }
 
+void Engine::checkBulletCollisions() {
+  collision=false;
+  std::list<Bullet>& bullets=player->getBulletList();
+  std::vector<SmartSprite*>::iterator it = sprites.begin();
+  for (Bullet& bullet : bullets) {
+    while(it != sprites.end()) {
+      if ( strategies[currentStrategy]->execute(bullet, **it) ) {
+        collision=true;
+        SmartSprite* doa = *it;
+        doa->explode();
+        if (doa->getName().find("Blue")!=std::string::npos){
+          explosion=true;
+          endTime=clock.getTicks()+2000;
+          currentExplosion=0;
+        }
+        if (doa->getName().find("Black")!=std::string::npos){
+          explosion=true;
+          endTime=clock.getTicks()+2000;
+          currentExplosion=1;
+        }
+        player->detach(doa);
+        delete doa;
+        it=sprites.erase(it);
+      }
+      else {
+        std::cout << "Loop!" << '\n';
+        ++it;
+      }
+    }
+
+  }
+}
+
 void Engine::update(Uint32 ticks) {
   checkForCollisions();
+  checkBulletCollisions();
   player->update(ticks);
   for ( Drawable* sprite : sprites ) {
     sprite->update( ticks );
-  }
-  if (clock.getTicks()<endTime){
-    explosionSprites[currentExplosion]->update( ticks );
-  }
-  else{
-    explosion=false;
+    if (clock.getTicks()<endTime){
+      //explosionSprites[currentExplosion]->setPosition(sprite->getPosition());
+      explosionSprites[currentExplosion]->update( ticks );
+    }
+    else{
+      explosion=false;
+    }
   }
   hills1.update();
   hills2.update();

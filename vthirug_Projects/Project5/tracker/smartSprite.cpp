@@ -36,8 +36,22 @@ void SmartSprite::explode() {
 
 }
 
-void SmartSprite::goLeft()  { images = blueMonsterLeft;  }
-void SmartSprite::goRight() { images = blueMonsterRight;  }
+void SmartSprite::goLeft()  {
+  if (this->getName().find("Blue")!=std::string::npos) {
+    images = blueMonsterLeft;
+  }
+  if (this->getName().find("Black")!=std::string::npos) {
+    images = blackMonsterLeft;
+  }
+}
+void SmartSprite::goRight()  {
+  if (this->getName().find("Blue")!=std::string::npos) {
+    images = blueMonsterRight;
+  }
+  if (this->getName().find("Black")!=std::string::npos) {
+    images = blackMonsterRight;
+  }
+}
 void SmartSprite::goUp()    { setVelocityY( -fabs(getVelocityY()) ); }
 void SmartSprite::goDown()  { setVelocityY( fabs(getVelocityY()) );  }
 

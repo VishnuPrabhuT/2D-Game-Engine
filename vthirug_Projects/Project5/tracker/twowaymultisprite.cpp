@@ -26,6 +26,8 @@ TwoWayMultiSprite::TwoWayMultiSprite( const std::string& name) :
   rollRight( RenderContext::getInstance()->getImages("RollRight") ),
 	blueMonsterLeft( RenderContext::getInstance()->getImages("BlueMonsterLeft") ),
 	blueMonsterRight( RenderContext::getInstance()->getImages("BlueMonsterRight") ),
+	blackMonsterLeft( RenderContext::getInstance()->getImages("BlackMonsterLeft") ),
+	blackMonsterRight( RenderContext::getInstance()->getImages("BlackMonsterRight") ),
   images(idleRight),
   currentFrame(0),
   numberOfFrames( Gamedata::getInstance().getXmlInt(name+"/frames") ),

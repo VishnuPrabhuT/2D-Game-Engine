@@ -30,6 +30,7 @@ public:
   void stop();
   void attach( SmartSprite* o );
   void detach( SmartSprite* o );
+  std::list<Bullet>& getBulletList(){ return bullets; }
 private:
   std::list<SmartSprite*> observers;
   bool collision;
