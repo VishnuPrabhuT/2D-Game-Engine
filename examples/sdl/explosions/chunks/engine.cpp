@@ -36,8 +36,6 @@ Engine::Engine() :
     sprites.push_back(s);
   }
 
-  sprites.push_back( new MultiSprite("coin") );
-  sprites[0]->setScale(2);
   sprites[0]->setVelocity(1.2*sprites[0]->getVelocity());
   sprites.push_back( new MultiSprite("coin") );
   sprites.back()->setScale(0.5);
