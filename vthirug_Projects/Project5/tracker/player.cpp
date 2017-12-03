@@ -3,6 +3,16 @@
 #include "gamedata.h"
 #include "renderContext.h"
 
+/*Player::~Player() {
+  for (auto bullet : bullets) {
+    delete bullet;
+  }
+
+  for (auto bullet : freeBullets) {
+    delete bullet;
+  }
+}*/
+
 Player::Player( const std::string& name) :
   TwoWayMultiSprite(name),
   observers(),

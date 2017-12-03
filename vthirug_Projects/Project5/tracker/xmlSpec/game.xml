@@ -67,7 +67,7 @@
 </font>
 
 <HUD>
-  <instructions>  To Move - A and D $     Dash - Space</instructions>
+  <instructions>  To Move - A and D $     Dash - Space$        Shoot - S</instructions>
   <width>110</width>
   <height>33</height>
 </HUD>
@@ -86,7 +86,7 @@
 
 <IdleRight>
   <file>assets/Buck/IdleRight.png</file>
-  <startLoc x="395" y="400"/>
+  <startLoc x="270" y="400"/>
   <frames>4</frames>
   <imageWidth>50</imageWidth>
   <imageHeight>60</imageHeight>

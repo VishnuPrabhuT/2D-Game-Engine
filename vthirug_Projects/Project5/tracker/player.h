@@ -22,7 +22,7 @@ public:
   void collided() { collision = true; }
   void missed() { collision = false; }
   Player& operator=(const Player&);
-
+  //~Player()
   void right();
   void left();
   void dash();

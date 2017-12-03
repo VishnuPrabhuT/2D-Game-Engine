@@ -48,6 +48,8 @@ TwoWayMultiSprite::TwoWayMultiSprite(const TwoWayMultiSprite& s) :
   rollRight(s.rollRight),
 	blueMonsterLeft(s.blueMonsterLeft),
 	blueMonsterRight(s.blueMonsterRight),
+	blackMonsterLeft(s.blackMonsterLeft),
+	blackMonsterRight(s.blackMonsterRight),
   images(s.images),
   currentFrame(s.currentFrame),
   numberOfFrames( s.numberOfFrames ),
@@ -59,6 +61,17 @@ TwoWayMultiSprite::TwoWayMultiSprite(const TwoWayMultiSprite& s) :
 
 TwoWayMultiSprite& TwoWayMultiSprite::operator=(const TwoWayMultiSprite& s) {
   Drawable::operator=(s);
+	idleRight = (s.idleRight);
+	idleLeft = (s.idleLeft);
+	runRight = (s.runRight);
+	runLeft = (s.runLeft);
+	dashRight = (s.dashRight);
+	dashLeft = (s.dashLeft);
+  rollRight = (s.rollRight);
+	blueMonsterLeft = (s.blueMonsterLeft);
+	blueMonsterRight = (s.blueMonsterRight);
+	blackMonsterLeft = (s.blackMonsterLeft);
+	blackMonsterRight = (s.blackMonsterRight);
   images = (s.images);
   currentFrame = (s.currentFrame);
   numberOfFrames = ( s.numberOfFrames );

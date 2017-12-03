@@ -97,10 +97,6 @@ void Engine::draw() {
     }
   }
   strategies[currentStrategy]->draw();
-  if ( playerCollision ) {
-    explosionSprites[currentExplosion]->draw();
-  }
-
 
   if (!gameOver) {
     player->draw();
@@ -137,13 +133,15 @@ void Engine::checkForCollisions() {
   std::vector<SmartSprite*>::iterator it = sprites.begin();
   while(it != sprites.end()){
     if ( strategies[currentStrategy]->execute(*player, **it) ) {
+      //std::cout << "Here~" << '\n';
       gameOver=true;
       playerCollision=true;
       currentExplosion=2;
       endTime=clock.getTicks()+2000;
-      //delete player;
-      player=new Player("IdleLeft");
-      Viewport::getInstance().setObjectToTrack(player);
+      explosionSprites[currentExplosion]->setPosition(player->getPosition());
+      player->setPosition(Vector2f(Gamedata::getInstance().getXmlInt("IdleRight/startLoc/x"),
+               Gamedata::getInstance().getXmlInt("IdleRight/startLoc/y")));
+      return;
     }
     else {
       ++it;
@@ -179,23 +177,23 @@ void Engine::checkBulletCollisions() {
         ++it;
       }
     }
-
   }
 }
 
 void Engine::update(Uint32 ticks) {
   if ( playerCollision ) {
-    explosionSprites[currentExplosion]->setPosition(player->getPosition());
     explosionSprites[currentExplosion]->update( ticks );
     if (endTime<clock.getTicks()) {
       playerCollision=false;
-      delete player;
-      player=new Player("IdleLeft");
+      //delete player;
+      //player=new Player("IdleLeft");
       gameOver=false;
       //reset=true;
     }
   }
-  player->update(ticks);
+
+    player->update(ticks);
+
   IOmod::getInstance().writeText("FreeList - "+std::to_string(player->freeCount()), 500, 70);
   IOmod::getInstance().writeText("BulletList - "+std::to_string(player->bulletCount()), 500, 93);
   for ( Drawable* sprite : sprites ) {
@@ -209,7 +207,9 @@ void Engine::update(Uint32 ticks) {
     }
   }
   checkBulletCollisions();
-  checkForCollisions();
+  if(!playerCollision) {
+    checkForCollisions();
+  }
   hills1.update();
   hills2.update();
   hills3.update();
