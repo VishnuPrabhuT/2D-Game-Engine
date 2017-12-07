@@ -1,0 +1,194 @@
+<?xml version = "1.0"?>
+<GameData>
+<!-- screenTitle is also used to identify you and your animation. 
+     So make sure to include your name as part of the screenTitle -->
+<title>Rudimentary Platform Demo</title>
+<maxStringSize>50</maxStringSize>
+<numberOfBirds>40</numberOfBirds>
+
+<frameCapOn>true</frameCapOn>
+<period>17</period>
+
+<maxFrames>300</maxFrames>
+<username>malloy</username>
+
+<view>
+  <width>854</width>
+  <height>480</height>
+</view>
+
+<world>
+  <width>26330</width>
+  <height>900</height>
+</world>
+
+
+<font name="font">
+  <file>fonts/arial.ttf</file>
+  <size>24</size>
+  <red>255</red>
+  <green>255</green>
+  <blue>255</blue>
+  <alpha>0</alpha>
+</font>
+
+<sky>
+  <file>assets/sky.png</file>
+  <factor>16</factor>
+  <transparency>false</transparency>
+</sky>
+
+<hills>
+	<file>assets/bighills.bmp</file>
+	<factor>4</factor>
+  <transparency>true</transparency>
+</hills>
+
+<trees>
+	<file>assets/backgroundtrees.png</file>
+	<factor>2</factor>
+  <transparency>true</transparency>
+</trees>
+
+<ground>
+	<file>assets/ground.png</file>
+	<factor>1</factor>
+  <transparency>true</transparency>
+</ground>
+
+<box>
+		<pos x="0" y="0"/>
+		<dim w="16" h="16"/>
+</box>
+
+<hills>
+  <file>assets/hills.bmp</file>
+  <transparency>true</transparency>
+  <factor>1</factor>
+</hills>
+
+<mountains>
+  <file>assets/mountains.bmp</file>
+  <transparency>true</transparency>
+  <factor>2</factor>
+</mountains>
+
+<clouds>
+  <file>assets/clouds.png</file>
+  <transparency>false</transparency>
+  <factor>3</factor>
+</clouds>
+
+<bear>
+	<file>assets/bearwalkSheet.png</file>
+	<frames> 16 </frames>
+	<frameInterval> 50 </frameInterval>
+	<startLoc x="550" y ="780"/> 
+  <speed x="200" y="50"/>
+  <transparency>true</transparency>
+</bear>
+
+<bearLeft>
+	<file>assets/bearwalkSheetLeft.png</file>
+	<frames> 16 </frames>
+	<frameInterval> 50 </frameInterval>
+	<startLoc x="2250" y ="780"/> 
+  <speed x="200" y="50"/>
+  <transparency>true</transparency>
+</bearLeft>
+
+<crate>
+	<file>assets/crate2.png</file>
+	<startLoc x="800" y="680"/>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+	<transparency>true</transparency>
+</crate>
+
+
+<raven>
+  <file>assets/ravenright.png</file>
+  <startLoc x="120" y="140"/>
+  <frames>4</frames>
+  <frameInterval>150</frameInterval>
+  <speedX>-200</speedX>
+  <speedY>10</speedY>
+  <transparency>false</transparency>
+</raven>
+
+<vogel>
+  <file>assets/vogel.png</file>
+  <startLoc x="120" y="140"/>
+  <frames>7</frames>
+  <frameInterval>30</frameInterval>
+  <speedX>-200</speedX>
+  <speedY>50</speedY>
+  <transparency>false</transparency>
+</vogel>
+
+<ravenleft>
+  <file>assets/ravenleft.png</file>
+  <frames>4</frames>
+  <frameInterval>150</frameInterval>
+  <transparency>false</transparency>
+</ravenleft>
+
+<crow>
+  <file>assets/crow.png</file>
+  <startLoc x="80" y="50"/>
+  <count> 20 </count>
+  <frames>6</frames>
+  <frameInterval>100</frameInterval>
+  <speedX>-200</speedX>
+  <speedY>200</speedY>
+  <transparency>false</transparency>
+</crow>
+
+<eagle>
+  <file>assets/eagle.png</file>
+  <startLoc x="120" y="180"/>
+  <count> 4 </count>
+  <frames>8</frames>
+  <frameInterval>100</frameInterval>
+  <speedX>-200</speedX>
+  <speedY>200</speedY>
+  <transparency>false</transparency>
+</eagle>
+
+<pter>
+  <file>assets/pterFlyRight.bmp</file>
+  <frames>4</frames>
+  <frameSpeed>200</frameSpeed>
+  <minFrameDelay>80</minFrameDelay>
+  <width>120</width>
+  <height>120</height>
+  <worldTop>120</worldTop>
+  <worldBottom>600</worldBottom>
+  <src x="0" y="0"/>
+  <speed x="350" y="50"/>
+  <startLoc x="350" y="750"/>
+  <bound upper="100" lower="620"/>
+  <bulletName>egg</bulletName>
+  <transparency>true</transparency>
+  <chunk>
+    <size>25</size>
+    <distance>200</distance>
+  </chunk>
+</pter>
+
+<pterLeft>
+  <file>assets/pterFlyLeft.bmp</file>
+  <frames>4</frames>
+  <frameSpeed>200</frameSpeed>
+  <minFrameDelay>100</minFrameDelay>
+  <width>120</width>
+  <height>120</height>
+  <src x="0" y="0"/>
+  <speed x="350" y="300"/>
+  <startLoc x="350" y="300"/>
+  <bound upper="100" lower="620"/>
+  <bulletName>egg</bulletName>
+  <transparency>true</transparency>
+</pterLeft>
+
+</GameData>
