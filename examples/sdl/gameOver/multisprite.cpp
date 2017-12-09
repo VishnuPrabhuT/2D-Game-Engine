@@ -73,16 +73,13 @@ bool MultiSprite::explosionDone() const {
 
 void MultiSprite::draw() const { 
   if ( explosion && explosion->chunkCount() > 0 ) explosion->draw();
-  else if ( explosion && explosion->chunkCount() == 0 ) return;
+  else if ( explosionDone() ) return;
   else images[currentFrame]->draw(getX(), getY(), getScale());
 }
 
 void MultiSprite::update(Uint32 ticks) { 
   if ( explosion && explosion->chunkCount() > 0 ) {
     explosion->update(ticks);
-    if ( explosion->chunkCount() == 0 ) {
-      delete explosion;
-    }
     return;
   }
   if ( explosion && explosion->chunkCount() == 0 ) {
