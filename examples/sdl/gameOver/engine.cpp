@@ -27,8 +27,7 @@ Engine::Engine() :
   player("coin"),
   sprites(),
   currentSprite(0),
-  makeVideo( false ),
-  gameOver( false )
+  makeVideo( false )
 {
   Drawable* s = new Sprite("yellowstar");
   s->setScale(2);

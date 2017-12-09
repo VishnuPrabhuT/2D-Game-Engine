@@ -28,7 +28,6 @@ private:
 
   int currentSprite;
   bool makeVideo;
-  bool gameOver;
 
   void draw() const;
   void update(Uint32);
