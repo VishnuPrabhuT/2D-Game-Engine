@@ -51,7 +51,6 @@ public:
   void  setVelocityY(float vy) { velocity[1] = vy;   }
 
   virtual void explode() = 0;
-  virtual bool isExploding() const = 0;
   virtual bool explosionDone() const = 0;
 private:
   std::string name;

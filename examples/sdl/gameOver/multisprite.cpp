@@ -64,13 +64,6 @@ void MultiSprite::explode() {
   }
 }
 
-bool MultiSprite::isExploding() const {
-  if ( explosion && explosion->chunkCount() > 0 ) {
-    return true;
-  }
-  else return false;
-}
-
 bool MultiSprite::explosionDone() const {
   if ( explosion && explosion->chunkCount() == 0 ) {
     return true;

@@ -65,13 +65,6 @@ void Sprite::explode() {
   if ( !explosion ) explosion = new ExplodingSprite(*this);
 }
 
-bool Sprite::isExploding() const {
-  if ( explosion && explosion->chunkCount() > 0 ) {
-    return true;
-  }
-  else return false;
-}
-
 bool Sprite::explosionDone() const {
   if ( explosion && explosion->chunkCount() == 0 ) {
     return true;
@@ -82,7 +75,7 @@ bool Sprite::explosionDone() const {
 void Sprite::draw() const { 
   if(getScale() < SCALE_EPSILON) return;
   if ( explosion && explosion->chunkCount() > 0 ) explosion->draw();
-  else if ( explosion && explosion->chunkCount() == 0 ) return;
+  else if ( explosionDone() ) return;
   else image->draw(getX(), getY(), getScale()); 
 }
 

@@ -30,7 +30,6 @@ public:
   }
 
   virtual void explode();
-  virtual bool isExploding() const;
   virtual bool explosionDone() const;
 
 protected:

@@ -119,12 +119,11 @@ bool Engine::play() {
         }
         if ( keystate[SDL_SCANCODE_R] ) {
           clock.unpause();
-          done = true;
           return true;
         }
         if ( keystate[SDL_SCANCODE_T] ) {
           // Disabled for this demo
-          //switchSprite();
+          // switchSprite();
         }
         if ( keystate[SDL_SCANCODE_E] ) {
           sprites[currentSprite]->explode();

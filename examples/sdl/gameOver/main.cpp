@@ -5,11 +5,11 @@ ImageFactory*  ImageFactory::instance = NULL;
 RenderContext* RenderContext::instance = NULL;
 
 int main(int, char*[]) {
-   bool done = false;
+   bool keepPlaying = true;
    try {
-     while ( !done ) {
+     while ( keepPlaying ) {
        Engine* engine = new Engine;
-       done = !engine->play();
+       keepPlaying = engine->play();
        delete engine;
      }
      delete RenderContext::getInstance();
