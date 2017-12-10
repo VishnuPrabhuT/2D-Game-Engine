@@ -1,6 +1,12 @@
-// The design and implementation of the classes Light and Triple
-// were contributed by Sean Kelly, Spring 2013.
-// The idea derived from Dr. Geist's course on Graphics, CpSc 405
+// The design and implementation of this light module, which includes
+// lights, light, and triple, was originally contributed for SDL 1.2
+// by Sean Kelly, Spring 2013.  The inspiration for the module was from 
+// Dr. Geist's graphics course, CpSc 405.
+// The module was updated for SDL 2.0 by Brian and Chris Malloy.
+// Brian and Chris also eliminated the dependence on open mp and
+// on the gfx library; thus, no additional libraries are necessary
+// to install and run this module.
+
 #include <list>
 #include <SDL.h>
 #include "triple.h"
