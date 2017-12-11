@@ -13,7 +13,7 @@ public:
   }
   Number(const Number& a) : number(a.number) { }
   int getNumber() const { return number; }
-  bool operator<(const Number& rhs) const { return number < rhs.number; }
+  bool operator<(const Number& rhs) const { return this->number < rhs.number; }
   bool operator>(const Number& rhs) const { return number > rhs.number; }
 private:
   int number;
@@ -49,8 +49,8 @@ int main() {
   numberList.sort( greater );
   print(numberList);
 
-  numberList.sort( 
-    [](const Number* a, const Number* b)->bool{return (*a) < (*b);} 
+  numberList.sort(
+    [](const Number* a, const Number* b)->bool{return (*a) < (*b);}
   );
   print(numberList);
 }

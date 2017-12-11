@@ -1,0 +1,295 @@
+<?xml version = "1.0"?>
+<GameData>
+<!-- screenTitle is also used to identify you and your animation.
+     So make sure to include your name as part of the screenTitle -->
+<title>Easter</title>
+<maxStringSize>50</maxStringSize>
+
+<frameCapOn>true</frameCapOn>
+<period>17</period>
+
+<CollisionStrategy>
+  <RectangularCollisionStrategy>0</RectangularCollisionStrategy>
+  <PerPixelCollisionStrategy>1</PerPixelCollisionStrategy>
+  <MidPointCollisionStrategy>2</MidPointCollisionStrategy>
+</CollisionStrategy>
+
+<maxFrames>500</maxFrames>
+<username>vthirug</username>
+
+<view>
+  <width>800</width>
+  <height>180</height>
+</view>
+
+<world>
+  <width>2400</width>
+  <height>200</height>
+</world>
+
+<hills1>
+  <file>assets/hills/hills1.png</file>
+  <factor>12</factor>
+  <transparency>true</transparency>
+</hills1>
+
+<hills2>
+  <file>assets/hills/hills2.png</file>
+  <factor>9</factor>
+  <transparency>true</transparency>
+</hills2>
+
+<hills3>
+  <file>assets/hills/hills3.png</file>
+  <factor>6</factor>
+  <transparency>true</transparency>
+</hills3>
+
+<hills4>
+  <file>assets/hills/hills4.png</file>
+  <factor>3</factor>
+  <transparency>true</transparency>
+</hills4>
+
+<hills5>
+  <file>assets/hills/hills5.png</file>
+  <factor>1</factor>
+  <transparency>true</transparency>
+</hills5>
+
+<font name="font">
+  <file>fonts/arial.ttf</file>
+  <size>24</size>
+  <red>255</red>
+  <green>0</green>
+  <blue>0</blue>
+  <alpha>0</alpha>
+</font>
+
+<HUD>
+  <instructions>  To Move - A and D $     Dash - Space$        Shoot - S</instructions>
+  <width>110</width>
+  <height>33</height>
+</HUD>
+
+<Lightning>
+  <file>assets/Bullets/Lightning.png</file>
+  <interval>300</interval>
+  <distance>320</distance>
+  <startLoc x="100" y="100"/>
+  <minSpeedX>200</minSpeedX>
+  <speedX>200</speedX>
+  <speedY>0</speedY>
+  <strategy>rectangular</strategy>
+  <transparency>false</transparency>
+</Lightning>
+
+<IdleRight>
+  <file>assets/Buck/IdleRight.png</file>
+  <startLoc x="270" y="400"/>
+  <frames>4</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>100</frameInterval>
+  <speedX>100</speedX>
+  <speedY>100</speedY>
+  <bullet>Lightning</bullet>
+  <transparency>false</transparency>
+</IdleRight>
+
+<IdleLeft>
+  <file>assets/Buck/IdleLeft.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>4</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>100</frameInterval>
+  <speedX>100</speedX>
+  <speedY>100</speedY>
+  <bullet>Lightning</bullet>
+  <transparency>false</transparency>
+</IdleLeft>
+
+<RunRight>
+  <file>assets/Buck/RunRight.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>6</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>100</frameInterval>
+  <speedX>150</speedX>
+  <speedY>150</speedY>
+  <bullet>Lightning</bullet>
+  <transparency>false</transparency>
+</RunRight>
+
+<RunLeft>
+  <file>assets/Buck/RunLeft.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>6</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>100</frameInterval>
+  <speedX>100</speedX>
+  <speedY>100</speedY>
+  <bullet>Lightning</bullet>
+  <transparency>false</transparency>
+</RunLeft>
+
+<DashRight>
+  <file>assets/Buck/DashRight.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>6</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>200</frameInterval>
+  <speedX>150</speedX>
+  <speedY>150</speedY>
+  <bullet>Lightning</bullet>
+  <transparency>false</transparency>
+</DashRight>
+
+<DashLeft>
+  <file>assets/Buck/DashLeft.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>7</frames>
+  <imageWidth>50</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>200</frameInterval>
+  <speedX>150</speedX>
+  <speedY>150</speedY>
+  <bullet>Lightning</bullet>
+  <transparency>false</transparency>
+</DashLeft>
+
+<RollRight>
+  <file>assets/Buck/RollRight.png</file>
+  <startLoc x="395" y="400"/>
+  <frames>10</frames>
+  <imageWidth>20</imageWidth>
+  <imageHeight>100</imageHeight>
+  <frameInterval>300</frameInterval>
+  <speedX>150</speedX>
+  <speedY>150</speedY>
+  <bullet>Lightning</bullet>
+  <transparency>false</transparency>
+</RollRight>
+
+<BlueMonsterGroundLeft>
+  <file>assets/Monsters/BlueMonsterGroundLeft.png</file>
+  <startLoc x="700" y="250"/>
+  <frames>2</frames>
+  <imageWidth>10</imageWidth>
+  <imageHeight>10</imageHeight>
+  <frameInterval>500</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</BlueMonsterGroundLeft>
+
+<BlueMonsterGroundRight>
+  <file>assets/Monsters/BlueMonsterGroundRight.png</file>
+  <startLoc x="1000" y="330"/>
+  <frames>2</frames>
+  <imageWidth>10</imageWidth>
+  <imageHeight>10</imageHeight>
+  <frameInterval>500</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</BlueMonsterGroundRight>
+
+<WaterExplosion>
+  <file>assets/Explosions/WaterExplosion.png</file>
+  <startLoc x="1000" y="300"/>
+  <frames>10</frames>
+  <imageWidth>100</imageWidth>
+  <imageHeight>200</imageHeight>
+  <frameInterval>300</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</WaterExplosion>
+
+<BlackExplosion>
+  <file>assets/Explosions/WaterExplosion.png</file>
+  <startLoc x="500" y="300"/>
+  <frames>10</frames>
+  <imageWidth>100</imageWidth>
+  <imageHeight>200</imageHeight>
+  <frameInterval>300</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</BlackExplosion>
+
+<PlayerExplosion>
+  <file>assets/Explosions/PlayerExplosion.png</file>
+  <startLoc x="500" y="300"/>
+  <frames>4</frames>
+  <imageWidth>100</imageWidth>
+  <imageHeight>200</imageHeight>
+  <frameInterval>300</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</PlayerExplosion>
+
+<BlueMonsterLeft>
+  <file>assets/Monsters/BlueMonsterLeft.png</file>
+  <startLoc x="700" y="250"/>
+  <frames>2</frames>
+  <imageWidth>10</imageWidth>
+  <imageHeight>10</imageHeight>
+  <frameInterval>500</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</BlueMonsterLeft>
+
+<BlueMonsterRight>
+  <file>assets/Monsters/BlueMonsterRight.png</file>
+  <startLoc x="700" y="250"/>
+  <frames>2</frames>
+  <imageWidth>10</imageWidth>
+  <imageHeight>10</imageHeight>
+  <frameInterval>500</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</BlueMonsterRight>
+
+<BlackMonsterLeft>
+  <file>assets/Monsters/BlackMonsterLeft.png</file>
+  <startLoc x="500" y="350"/>
+  <frames>2</frames>
+  <imageWidth>10</imageWidth>
+  <imageHeight>10</imageHeight>
+  <frameInterval>500</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</BlackMonsterLeft>
+
+<BlackMonsterRight>
+  <file>assets/Monsters/BlackMonsterRight.png</file>
+  <startLoc x="500" y="350"/>
+  <frames>2</frames>
+  <imageWidth>10</imageWidth>
+  <imageHeight>10</imageHeight>
+  <frameInterval>500</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</BlackMonsterRight>
+
+</GameData>
