@@ -30,8 +30,11 @@ build/smartSprite.o: smartSprite.cpp smartSprite.h twowaymultisprite.h \
  /usr/local/include/SDL2/SDL_messagebox.h \
  /usr/local/include/SDL2/SDL_power.h /usr/local/include/SDL2/SDL_render.h \
  /usr/local/include/SDL2/SDL_system.h /usr/local/include/SDL2/SDL_timer.h \
- /usr/local/include/SDL2/SDL_version.h vector2f.h image.h gamedata.h \
- parseXML.h renderContext.h imageFactory.h spriteSheet.h
+ /usr/local/include/SDL2/SDL_version.h vector2f.h image.h bullet.h \
+ sprite.h gamedata.h parseXML.h clock.h engine.h ioMod.h \
+ /usr/local/include/SDL2/SDL_ttf.h /usr/local/include/SDL2/SDL.h hud.h \
+ renderContext.h imageFactory.h spriteSheet.h world.h viewport.h sound.h \
+ /usr/local/include/SDL2/SDL_mixer.h
 
 smartSprite.h:
 
@@ -129,12 +132,36 @@ vector2f.h:
 
 image.h:
 
+bullet.h:
+
+sprite.h:
+
 gamedata.h:
 
 parseXML.h:
+
+clock.h:
+
+engine.h:
+
+ioMod.h:
+
+/usr/local/include/SDL2/SDL_ttf.h:
+
+/usr/local/include/SDL2/SDL.h:
+
+hud.h:
 
 renderContext.h:
 
 imageFactory.h:
 
 spriteSheet.h:
+
+world.h:
+
+viewport.h:
+
+sound.h:
+
+/usr/local/include/SDL2/SDL_mixer.h:

@@ -65,7 +65,6 @@ void Player::shoot() {
     Bullet b = freeBullets.front();
     freeBullets.pop_front();
     b.reset();
-    //std::cout << this->getName() << '\n';
     if(images == runRight || images == idleRight || images == dashRight) {
       b.setPosition( getPosition() + Vector2f(deltaX, deltaY) );
       b.setVelocity( 2*(getVelocity() + Vector2f(minSpeed, 0)));
@@ -159,16 +158,6 @@ void Player::update(Uint32 ticks) {
       freeBullets.push_back( b );
     }
   }
-  /*for ( Bullet& freeBullet : bullets ) {
-    if (!freeBullet.goneTooFar()){
-      freeBullet.update( ticks );
-      std::cout << freeBullets.size()<<"\n"<<bullets.size() << '\n';
-    }
-    else if (freeBullet.goneTooFar()){
-      freeBullet.reset();
-      freeBullets.push_back(freeBullet);
-      bullets.pop_front();
-    }*/
 
   std::list<SmartSprite*>::iterator ptr = observers.begin();
   while ( ptr != observers.end() ) {

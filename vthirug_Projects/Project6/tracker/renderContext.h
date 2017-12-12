@@ -1,3 +1,5 @@
+#ifndef RENDERCONTEXT__H
+#define RENDERCONTEXT__H
 #include <iostream>
 #include <SDL.h>
 #include "imageFactory.h"
@@ -13,11 +15,11 @@ public:
   SDL_Window* getWindow() const { return window; }
   SDL_Renderer* getRenderer() const { return renderer; }
 
-  //SDL_Surface* getSurface(const std::string& n) { 
+  //SDL_Surface* getSurface(const std::string& n) {
     //return factory->getSurface(n);
   //}
 
-  Image* getImage(const std::string& n) { 
+  Image* getImage(const std::string& n) {
     return factory.getImage(n);
   }
   std::vector<Image*> getImages(const std::string& n) {
@@ -36,3 +38,4 @@ private:
   RenderContext(const RenderContext&) = delete;
   RenderContext& operator=(const RenderContext&) = delete;
 };
+#endif

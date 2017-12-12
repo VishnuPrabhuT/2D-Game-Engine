@@ -28,6 +28,8 @@ TwoWayMultiSprite::TwoWayMultiSprite( const std::string& name) :
 	blueMonsterRight( RenderContext::getInstance()->getImages("BlueMonsterRight") ),
 	blackMonsterLeft( RenderContext::getInstance()->getImages("BlackMonsterLeft") ),
 	blackMonsterRight( RenderContext::getInstance()->getImages("BlackMonsterRight") ),
+	orangeMonsterLeft( RenderContext::getInstance()->getImages("OrangeMonsterLeft") ),
+	orangeMonsterRight( RenderContext::getInstance()->getImages("OrangeMonsterRight") ),
   images(idleRight),
   currentFrame(0),
   numberOfFrames( Gamedata::getInstance().getXmlInt(name+"/frames") ),
@@ -50,6 +52,8 @@ TwoWayMultiSprite::TwoWayMultiSprite(const TwoWayMultiSprite& s) :
 	blueMonsterRight(s.blueMonsterRight),
 	blackMonsterLeft(s.blackMonsterLeft),
 	blackMonsterRight(s.blackMonsterRight),
+	orangeMonsterLeft(s.orangeMonsterLeft),
+	orangeMonsterRight(s.orangeMonsterRight),
   images(s.images),
   currentFrame(s.currentFrame),
   numberOfFrames( s.numberOfFrames ),
@@ -72,6 +76,8 @@ TwoWayMultiSprite& TwoWayMultiSprite::operator=(const TwoWayMultiSprite& s) {
 	blueMonsterRight = (s.blueMonsterRight);
 	blackMonsterLeft = (s.blackMonsterLeft);
 	blackMonsterRight = (s.blackMonsterRight);
+	orangeMonsterLeft = (s.orangeMonsterLeft);
+	orangeMonsterRight = (s.orangeMonsterRight);
   images = (s.images);
   currentFrame = (s.currentFrame);
   numberOfFrames = ( s.numberOfFrames );

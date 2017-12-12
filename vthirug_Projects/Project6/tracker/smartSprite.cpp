@@ -19,8 +19,17 @@ SmartSprite::SmartSprite(const std::string& name, const Vector2f& pos, int w, in
   playerWidth(w),
   playerHeight(h),
   currentMode(RIGHT),
-  safeDistance(Gamedata::getInstance().getXmlFloat(name+"/safeDistance"))
-{}
+  safeDistance(Gamedata::getInstance().getXmlFloat(name+"/safeDistance")),
+  bulletName( Gamedata::getInstance().getXmlStr(name+"/bullet") ),
+  bulletsNPC(),
+  freeBulletsNPC(),
+  minSpeed( Gamedata::getInstance().getXmlInt(bulletName+"/speedX") ),
+  bulletInterval(Gamedata::getInstance().getXmlInt(bulletName+"/interval")),
+  timeSinceLastFrame(0)
+{
+  Bullet bullet(bulletName);
+  freeBulletsNPC.push_back( bullet );
+}
 
 
 SmartSprite::SmartSprite(const SmartSprite& s) :
@@ -29,12 +38,44 @@ SmartSprite::SmartSprite(const SmartSprite& s) :
   playerWidth(s.playerWidth),
   playerHeight(s.playerHeight),
   currentMode(s.currentMode),
-  safeDistance(s.safeDistance)
+  safeDistance(s.safeDistance),
+  bulletName(s.bulletName),
+  bulletsNPC(s.bulletsNPC),
+  freeBulletsNPC(s.freeBulletsNPC),
+  minSpeed(s.minSpeed),
+  bulletInterval(s.bulletInterval),
+  timeSinceLastFrame(s.timeSinceLastFrame)
 {}
+
+
 
 void SmartSprite::explode() {
 
 }
+
+
+void SmartSprite::shoot() {
+  std::cout << "out" << '\n';
+  if ( timeSinceLastFrame < bulletInterval ) return;
+  std::cout << "in" << '\n';
+  float deltaX = getScaledWidth();
+  float deltaY = getScaledHeight()/2;
+  if (freeBulletsNPC.empty()) {
+    Bullet bullet(bulletName);
+    freeBulletsNPC.push_back( bullet );
+    std::cout << "bullet" << '\n';
+  }
+  else {
+    Bullet b = freeBulletsNPC.front();
+    freeBulletsNPC.pop_front();
+    b.reset();
+    b.setPosition( getPosition() + Vector2f(deltaX/3, deltaY) );
+    b.setVelocityY(-minSpeed*50);
+    bulletsNPC.push_back( b );
+  }
+  timeSinceLastFrame = 0;
+}
+
 
 void SmartSprite::goLeft()  {
   if (this->getName().find("Blue")!=std::string::npos) {
@@ -55,8 +96,33 @@ void SmartSprite::goRight()  {
 void SmartSprite::goUp()    { setVelocityY( -fabs(getVelocityY()) ); }
 void SmartSprite::goDown()  { setVelocityY( fabs(getVelocityY()) );  }
 
+void SmartSprite::draw() const {
+  TwoWayMultiSprite::draw();
+  for ( const Bullet& freeBullet : bulletsNPC ) {
+    if(!freeBullet.goneTooFar()){
+      freeBullet.draw();
+    }
+  }
+}
+
 void SmartSprite::update(Uint32 ticks) {
   TwoWayMultiSprite::update(ticks);
+  timeSinceLastFrame += ticks;
+
+  std::list<Bullet>::iterator it=bulletsNPC.begin();
+  while ( it != bulletsNPC.end() ) {
+    if (!it->goneTooFar()){
+      it->update( ticks );
+      ++it;
+    }
+    else if ( !bulletsNPC.empty() ){
+      Bullet b = bulletsNPC.front();
+      it=bulletsNPC.erase(it);
+      b.reset();
+      freeBulletsNPC.push_back( b );
+    }
+  }
+
   float x= getX()+getImage()->getWidth()/2;
   float y= getY()+getImage()->getHeight()/2;
   float ex= playerPos[0]+playerWidth/2;

@@ -16,7 +16,6 @@
 
 Engine::~Engine() {
   delete player;
-  delete realPlayer;
   for (auto sprite:sprites){
     delete sprite;
   }
@@ -44,7 +43,6 @@ Engine::Engine() :
   hills5("hills5", Gamedata::getInstance().getXmlInt("hills5/factor") ),
   viewport( Viewport::getInstance() ),
   player(new Player("IdleRight")),
-  realPlayer(new Player("IdleRight")),
   sprites(),
   strategies(),
   explosionSprites(),
@@ -66,8 +64,9 @@ Engine::Engine() :
   sprites.push_back( new SmartSprite("BlueMonsterRight", pos, w, h) );
   sprites.push_back( new SmartSprite("BlueMonsterGroundRight", pos, w, h) );
   sprites.push_back( new SmartSprite("BlackMonsterRight", pos, w, h) );
-  for (unsigned long i = 0; i < sprites.size(); ++i) {
-    player->attach( sprites[i] );
+  sprites.push_back( new SmartSprite("OrangeMonsterRight", pos, w, h) );
+  for (auto sprite : sprites) {
+    player->attach( sprite );
   }
 
   explosionSprites.push_back(new MultiSprite("WaterExplosion"));
@@ -102,8 +101,8 @@ void Engine::draw() {
   }
 
   if(showHUD){
-    IOmod::getInstance().writeText("FreeList - "+std::to_string(player->freeCount()), 500, 70);
-    IOmod::getInstance().writeText("BulletList - "+std::to_string(player->bulletCount()), 500, 93);
+    IOmod::getInstance().writeText("FreeList - "+std::to_string(player->freeCount()), 650, 70);
+    IOmod::getInstance().writeText("BulletList - "+std::to_string(player->bulletCount()), 650, 93);
     int width=hud.getWidth();
     int height=hud.getHeight();
     SDL_SetRenderDrawColor(renderer,0,0,0,255);
@@ -120,7 +119,7 @@ void Engine::draw() {
     }
   }
   if ( gameOver ) {
-    io.writeText("Game Over!", 500, 120);
+    io.writeText("Game Over!", 300, 120);
     io.writeText("Press R to Restart the game", 250, 200);
   }
   viewport.draw();
@@ -128,11 +127,9 @@ void Engine::draw() {
 }
 
 void Engine::checkForCollisions() {
-  //gameOver=false;
   std::vector<SmartSprite*>::iterator it = sprites.begin();
   while(it != sprites.end()){
     if ( strategies[currentStrategy]->execute(*player, **it) ) {
-      //std::cout << "Here~" << '\n';
       gameOver=true;
       playerCollision=true;
       currentExplosion=2;
@@ -145,11 +142,27 @@ void Engine::checkForCollisions() {
       ++it;
     }
   }
+  for(auto sprite : sprites) {
+    std::list<Bullet>& bulletsNPC = sprite->getBulletList();
+      for(auto bullet : bulletsNPC){
+        if ( strategies[currentStrategy]->execute(*player, bullet) ) {
+          gameOver=true;
+          playerCollision=true;
+          currentExplosion=2;
+          endTime=clock.getTicks()+2000;
+          explosionSprites[currentExplosion]->setPosition(player->getPosition());
+          player->setPosition(Vector2f(Gamedata::getInstance().getXmlInt("IdleRight/startLoc/x"),
+                   Gamedata::getInstance().getXmlInt("IdleRight/startLoc/y")));
+        }
+        else {
+          ++it;
+        }
+      }
+  }
 }
 
 void Engine::checkBulletCollisions() {
-  //collision=false;
-  std::list<Bullet>& bullets=player->getBulletList();
+  std::list<Bullet>& bullets = player->getBulletList();
   std::vector<SmartSprite*>::iterator it = sprites.begin();
   for (Bullet& bullet : bullets) {
     while(it != sprites.end()) {
@@ -188,14 +201,17 @@ void Engine::update(Uint32 ticks) {
     }
   }
 
-    player->update(ticks);
-
-  IOmod::getInstance().writeText("FreeList - "+std::to_string(player->freeCount()), 500, 70);
-  IOmod::getInstance().writeText("BulletList - "+std::to_string(player->bulletCount()), 500, 93);
+  player->update(ticks);
+  if (Clock::getInstance().getTicks()%25==0) {
+    for(SmartSprite* sprite : sprites){
+      sprite->shoot();
+    }
+  }
+  IOmod::getInstance().writeText("FreeList - "+std::to_string(player->freeCount()), 700, 70);
+  IOmod::getInstance().writeText("BulletList - "+std::to_string(player->bulletCount()), 700, 93);
   for ( Drawable* sprite : sprites ) {
     sprite->update( ticks );
     if (clock.getTicks()<endTime){
-      //explosionSprites[currentExplosion]->setPosition(sprite->getPosition());
       explosionSprites[currentExplosion]->update( ticks );
     }
     else{
@@ -227,9 +243,6 @@ bool Engine::play() {
       showHUD=false;
       initialFlag=false;
     }
-    /*if (reset) {
-      return true;
-    }*/
     while ( SDL_PollEvent(&event) ) {
       keystate = SDL_GetKeyboardState(NULL);
       if (event.type ==  SDL_QUIT) { done = true; break; }
@@ -281,6 +294,7 @@ bool Engine::play() {
         player->roll();
       }
       if ( keystate[SDL_SCANCODE_S] ) {
+        sound[3];
         player->shoot();
       }
       draw();

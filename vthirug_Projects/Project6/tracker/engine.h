@@ -1,3 +1,5 @@
+#ifndef ENGINE__H
+#define ENGINE__H
 #include <vector>
 #include <SDL.h>
 #include "ioMod.h"
@@ -17,7 +19,7 @@ public:
   Engine ();
   ~Engine ();
   bool play();
-
+  std::vector<SmartSprite*> getSprites() const { return sprites;}
 private:
   const RenderContext* rc;
   const IOmod& io;
@@ -32,7 +34,6 @@ private:
   World hills5;
   Viewport& viewport;
   Player* player;
-  Player* realPlayer;
   std::vector<SmartSprite*> sprites;
   std::vector<CollisionStrategy*> strategies;
   std::vector<Drawable*> explosionSprites;
@@ -57,3 +58,4 @@ private:
   void checkForCollisions();
   void checkBulletCollisions();
 };
+#endif

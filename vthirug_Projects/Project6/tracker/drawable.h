@@ -48,7 +48,7 @@ public:
   float getVelocityX() const   { return velocity[0]; }
   void  setVelocityX(float vx) { velocity[0] = vx;   }
   float getVelocityY() const   { return velocity[1]; }
-  void  setVelocityY(float vy) { velocity[1] = vy;   }
+  void  setVelocityY(float vy) { velocity[1] = -vy;   }
 private:
   std::string name;
   Vector2f position;
