@@ -55,22 +55,24 @@ void SmartSprite::explode() {
 
 
 void SmartSprite::shoot() {
-  std::cout << "out" << '\n';
   if ( timeSinceLastFrame < bulletInterval ) return;
-  std::cout << "in" << '\n';
   float deltaX = getScaledWidth();
   float deltaY = getScaledHeight()/2;
   if (freeBulletsNPC.empty()) {
     Bullet bullet(bulletName);
     freeBulletsNPC.push_back( bullet );
-    std::cout << "bullet" << '\n';
   }
   else {
     Bullet b = freeBulletsNPC.front();
     freeBulletsNPC.pop_front();
     b.reset();
     b.setPosition( getPosition() + Vector2f(deltaX/3, deltaY) );
-    b.setVelocityY(-minSpeed*50);
+    std::vector<int> v;
+    v.push_back(-200);
+    v.push_back(0);
+    v.push_back(200);
+    b.setVelocityX(getVelocityX()+v[rand()%3]);
+    b.setVelocityY(-minSpeed*30);
     bulletsNPC.push_back( b );
   }
   timeSinceLastFrame = 0;
@@ -84,6 +86,12 @@ void SmartSprite::goLeft()  {
   if (this->getName().find("Black")!=std::string::npos) {
     images = blackMonsterLeft;
   }
+  if (this->getName().find("Orange")!=std::string::npos) {
+    images = orangeMonsterLeft;
+  }
+  if (this->getName().find("Pink")!=std::string::npos) {
+    images = pinkMonsterLeft;
+  }
 }
 void SmartSprite::goRight()  {
   if (this->getName().find("Blue")!=std::string::npos) {
@@ -91,6 +99,12 @@ void SmartSprite::goRight()  {
   }
   if (this->getName().find("Black")!=std::string::npos) {
     images = blackMonsterRight;
+  }
+  if (this->getName().find("Orange")!=std::string::npos) {
+    images = orangeMonsterRight;
+  }
+  if (this->getName().find("Pink")!=std::string::npos) {
+    images = pinkMonsterRight;
   }
 }
 void SmartSprite::goUp()    { setVelocityY( -fabs(getVelocityY()) ); }

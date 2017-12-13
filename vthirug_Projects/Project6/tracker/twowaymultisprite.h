@@ -40,8 +40,14 @@ protected:
   std::vector<Image *> blueMonsterRight;
   std::vector<Image *> blackMonsterLeft;
   std::vector<Image *> blackMonsterRight;
+  std::vector<Image *> blackMonsterTopLeft;
+  std::vector<Image *> blackMonsterTopRight;
   std::vector<Image *> orangeMonsterLeft;
   std::vector<Image *> orangeMonsterRight;
+  std::vector<Image *> orangeMonsterTopLeft;
+  std::vector<Image *> orangeMonsterTopRight;
+  std::vector<Image *> pinkMonsterLeft;
+  std::vector<Image *> pinkMonsterRight;
   std::vector<Image *> images;
 
   unsigned currentFrame;

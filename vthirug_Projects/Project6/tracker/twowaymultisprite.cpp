@@ -28,8 +28,14 @@ TwoWayMultiSprite::TwoWayMultiSprite( const std::string& name) :
 	blueMonsterRight( RenderContext::getInstance()->getImages("BlueMonsterRight") ),
 	blackMonsterLeft( RenderContext::getInstance()->getImages("BlackMonsterLeft") ),
 	blackMonsterRight( RenderContext::getInstance()->getImages("BlackMonsterRight") ),
+	blackMonsterTopLeft( RenderContext::getInstance()->getImages("BlackMonsterTopLeft") ),
+	blackMonsterTopRight( RenderContext::getInstance()->getImages("BlackMonsterTopRight") ),
 	orangeMonsterLeft( RenderContext::getInstance()->getImages("OrangeMonsterLeft") ),
 	orangeMonsterRight( RenderContext::getInstance()->getImages("OrangeMonsterRight") ),
+	orangeMonsterTopLeft( RenderContext::getInstance()->getImages("OrangeMonsterTopLeft") ),
+	orangeMonsterTopRight( RenderContext::getInstance()->getImages("OrangeMonsterTopRight") ),
+	pinkMonsterLeft( RenderContext::getInstance()->getImages("PinkMonsterLeft") ),
+	pinkMonsterRight( RenderContext::getInstance()->getImages("PinkMonsterRight") ),
   images(idleRight),
   currentFrame(0),
   numberOfFrames( Gamedata::getInstance().getXmlInt(name+"/frames") ),
@@ -52,8 +58,14 @@ TwoWayMultiSprite::TwoWayMultiSprite(const TwoWayMultiSprite& s) :
 	blueMonsterRight(s.blueMonsterRight),
 	blackMonsterLeft(s.blackMonsterLeft),
 	blackMonsterRight(s.blackMonsterRight),
+	blackMonsterTopLeft(s.blackMonsterTopLeft),
+	blackMonsterTopRight(s.blackMonsterTopRight),
 	orangeMonsterLeft(s.orangeMonsterLeft),
 	orangeMonsterRight(s.orangeMonsterRight),
+	orangeMonsterTopLeft(s.orangeMonsterTopLeft),
+	orangeMonsterTopRight(s.orangeMonsterTopRight),
+	pinkMonsterLeft(s.pinkMonsterLeft),
+	pinkMonsterRight(s.pinkMonsterRight),
   images(s.images),
   currentFrame(s.currentFrame),
   numberOfFrames( s.numberOfFrames ),
@@ -76,8 +88,14 @@ TwoWayMultiSprite& TwoWayMultiSprite::operator=(const TwoWayMultiSprite& s) {
 	blueMonsterRight = (s.blueMonsterRight);
 	blackMonsterLeft = (s.blackMonsterLeft);
 	blackMonsterRight = (s.blackMonsterRight);
+	blackMonsterTopLeft = (s.blackMonsterTopLeft);
+	blackMonsterTopRight = (s.blackMonsterTopRight);
 	orangeMonsterLeft = (s.orangeMonsterLeft);
 	orangeMonsterRight = (s.orangeMonsterRight);
+	orangeMonsterTopLeft = (s.orangeMonsterTopLeft);
+	orangeMonsterTopRight = (s.orangeMonsterTopRight);
+	pinkMonsterLeft = (s.pinkMonsterLeft);
+	pinkMonsterRight = (s.pinkMonsterRight);
   images = (s.images);
   currentFrame = (s.currentFrame);
   numberOfFrames = ( s.numberOfFrames );

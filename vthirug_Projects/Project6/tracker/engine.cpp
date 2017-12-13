@@ -16,6 +16,7 @@
 
 Engine::~Engine() {
   delete player;
+  delete egg;
   for (auto sprite:sprites){
     delete sprite;
   }
@@ -43,6 +44,7 @@ Engine::Engine() :
   hills5("hills5", Gamedata::getInstance().getXmlInt("hills5/factor") ),
   viewport( Viewport::getInstance() ),
   player(new Player("IdleRight")),
+  egg(new MultiSprite("Plot")),
   sprites(),
   strategies(),
   explosionSprites(),
@@ -52,6 +54,8 @@ Engine::Engine() :
   currentStrategy(Gamedata::getInstance().getXmlInt("CollisionStrategy/PerPixelCollisionStrategy")),
   playerCollision(false),
   gameOver(false),
+  gameWon(false),
+  godMode(false),
   currentSprite(0),
   showHUD(true),
   initialFlag(true),
@@ -64,7 +68,10 @@ Engine::Engine() :
   sprites.push_back( new SmartSprite("BlueMonsterRight", pos, w, h) );
   sprites.push_back( new SmartSprite("BlueMonsterGroundRight", pos, w, h) );
   sprites.push_back( new SmartSprite("BlackMonsterRight", pos, w, h) );
+  sprites.push_back( new SmartSprite("BlackMonsterTopRight", pos, w, h) );
   sprites.push_back( new SmartSprite("OrangeMonsterRight", pos, w, h) );
+  sprites.push_back( new SmartSprite("OrangeMonsterTopRight", pos, w, h) );
+  sprites.push_back( new SmartSprite("PinkMonsterRight", pos, w, h) );
   for (auto sprite : sprites) {
     player->attach( sprite );
   }
@@ -99,6 +106,19 @@ void Engine::draw() {
   if (!gameOver) {
     player->draw();
   }
+  if (player->getPosition()[0]>=2243){
+    gameWon=true;
+    IOmod::getInstance().writeText("Press R to Restart !", 300, 250);
+    egg->draw();
+  }
+  if (gameWon) {
+    IOmod::getInstance().writeText("You Won - Happy Holidays !", 270, 200);
+    IOmod::getInstance().writeText("Press R to Restart !", 300, 250);
+  }
+
+  if (godMode) {
+    IOmod::getInstance().writeText("God Mode On !!!!!", 300, 40);
+  }
 
   if(showHUD){
     IOmod::getInstance().writeText("FreeList - "+std::to_string(player->freeCount()), 650, 70);
@@ -107,7 +127,7 @@ void Engine::draw() {
     int height=hud.getHeight();
     SDL_SetRenderDrawColor(renderer,0,0,0,255);
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-    SDL_Rect body = {width, height, 220, 175};
+    SDL_Rect body = {35, 155, width, height};
     SDL_RenderFillRect( renderer, &body );
     const std::string& s = hud.getText();
     std::istringstream ss(s);
@@ -119,7 +139,7 @@ void Engine::draw() {
     }
   }
   if ( gameOver ) {
-    io.writeText("Game Over!", 300, 120);
+    io.writeText("Game Over!", 340, 120);
     io.writeText("Press R to Restart the game", 250, 200);
   }
   viewport.draw();
@@ -167,7 +187,7 @@ void Engine::checkBulletCollisions() {
   for (Bullet& bullet : bullets) {
     while(it != sprites.end()) {
       if ( strategies[currentStrategy]->execute(bullet, **it) ) {
-        //collision=true;
+        //endTime=clock.getTicks()+2000;
         SmartSprite* doa = *it;
         doa->explode();
         if (doa->getName().find("Blue")!=std::string::npos){
@@ -200,8 +220,14 @@ void Engine::update(Uint32 ticks) {
       gameOver=false;
     }
   }
-
+  if (player->getPosition()[0]>=2243){
+    gameWon=true;
+  }
+  else{
+    gameWon=false;
+  }
   player->update(ticks);
+  egg->update(ticks);
   if (Clock::getInstance().getTicks()%25==0) {
     for(SmartSprite* sprite : sprites){
       sprite->shoot();
@@ -218,9 +244,11 @@ void Engine::update(Uint32 ticks) {
       explosion=false;
     }
   }
-  checkBulletCollisions();
-  if(!playerCollision) {
-    checkForCollisions();
+  if (!godMode) {
+    checkBulletCollisions();
+    if(!playerCollision) {
+      checkForCollisions();
+    }
   }
   hills1.update();
   hills2.update();
@@ -254,6 +282,13 @@ bool Engine::play() {
         if ( keystate[SDL_SCANCODE_P] ) {
           if ( clock.isPaused() ) clock.unpause();
           else clock.pause();
+        }
+        if ( keystate[SDL_SCANCODE_R] ) {
+          clock.unpause();
+          return true;
+        }
+        if (keystate[SDL_SCANCODE_G]) {
+          godMode = !godMode;
         }
         if ( keystate[SDL_SCANCODE_R] ) {
           clock.unpause();

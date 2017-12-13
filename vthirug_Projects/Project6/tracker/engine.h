@@ -34,6 +34,7 @@ private:
   World hills5;
   Viewport& viewport;
   Player* player;
+  Drawable* egg;
   std::vector<SmartSprite*> sprites;
   std::vector<CollisionStrategy*> strategies;
   std::vector<Drawable*> explosionSprites;
@@ -43,6 +44,8 @@ private:
   int currentStrategy;
   bool playerCollision;
   bool gameOver;
+  bool gameWon;
+  bool godMode;
   int currentSprite;
   bool showHUD;
   bool initialFlag;
